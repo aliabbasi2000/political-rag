@@ -1,29 +1,75 @@
-# 1. Terminal A: start Ollama
+# RAG Playground
 
-```
-curl -fsSL https://ollama.com/install.sh | sh 
+A learning project for building a Retrieval-Augmented Generation (RAG) pipeline Ollama
+
+---
+
+
+## Requirement
+
+For Windows machine:
+
+- **WSL2** with Ubuntu
+- **Docker Desktop** with WSL2 integration enabled 
+
+## Installation
+
+### Terminal A — Set up Ollama and keep it running
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+
 ollama pull qwen3:0.6b
 ollama pull nomic-embed-text
+
 ollama serve
 ```
-## Run model and Test it
 
-```ollama run qwen3:0.6b```
+To verify the models are loaded:
+```bash
+ollama run qwen3:0.6b
+```
 
-# 2. Terminal B: activate venv 
+### Terminal B — Clone and set up the project
+
+```bash
+git clone 
+cd rag-playground
 
 python3 -m venv .venv
-```source .venv/bin/activate```
-nano .env
-OLLAMA_HOST=http://host.docker.internal:11434
-OLLAMA_MODEL=qwen3:0.6b
+source .venv/bin/activate
 
-# 3. Developement Loop
-
-## 1. Edit code and Run code locally with venv:
-```python3 main.py```
-
-## 2. When it works locally, Run inside Docker container 
-```docker compose up --build```
+pip install -r requirements.txt
+```
 
 
+---
+
+## Running the Project
+
+### Option 1 — Run locally
+
+```bash
+source .venv/bin/activate 
+python3 main.py
+```
+
+### Option 2 — Run inside Docker
+
+```bash
+docker compose up --build
+```
+
+---
+
+## Development Loop
+
+```
+1. Edit your .py files locally
+         ↓
+2. Test quickly with local Python
+   python3 main.py
+         ↓
+3. When it works, run in Docker
+   docker compose up --build
+```
