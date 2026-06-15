@@ -5,3 +5,4 @@ ollama
 faiss-cpu
 requests
 python-dotenv
+wikipedia
