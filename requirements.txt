@@ -6,3 +6,6 @@ faiss-cpu
 requests
 python-dotenv
 wikipedia
+psycopg2-binary
+pgvector
+sqlalchemy
