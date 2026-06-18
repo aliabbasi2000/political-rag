@@ -7,7 +7,7 @@ from embedding_db import get_psql_session, TextEmbedding
 def populate_vector_database(folder_path="./data/all_articles"):
 
     session = get_psql_session()
-    model = SentenceTransformer("./Qwen3-Embedding-0.6B/model.safetensors", device="cpu") #https://huggingface.co/Qwen/Qwen3-Embedding-0.6B
+    model = SentenceTransformer("models/Qwen3-Embedding-0.6B", device="cpu") #https://huggingface.co/Qwen/Qwen3-Embedding-0.6B
 
     for filename in os.listdir(folder_path):
         file_path = os.path.join(folder_path, filename)
