@@ -34,7 +34,7 @@ ollama run qwen3:0.6b
 ### Terminal B — Clone and set up the project
 
 ```bash
-git clone 
+git clone https://github.com/aliabbasi2000/rag-playground.git
 cd rag-playground
 
 python3 -m venv .venv
@@ -59,6 +59,7 @@ cp .env.example .env
 
 ```bash
 source .venv/bin/activate 
+docker compose up db -d          # database must be running
 python3 main.py
 ```
 
@@ -67,6 +68,52 @@ python3 main.py
 ```bash
 docker compose up --build
 ```
+
+### Run a specific script in Docker
+ 
+```bash
+docker compose run --rm rag python3 src/populate_vector_db.py
+```
+
+---
+
+## Databases
+ 
+This project has two PostgreSQL instances. Only one should run at a time.
+ 
+### Option A — Docker PostgreSQL (recommended)
+ 
+Runs as a container. Starts automatically and No manual installation needed.
+ 
+```bash
+# Start (detached)
+docker compose up db -d
+ 
+# Connect
+psql -h localhost -U postgres -d text_embeddings
+
+# Stop
+docker compose stop db
+```
+ 
+> ⚠️ If Docker PostgreSQL fails to start with "port already in use", the local PostgreSQL is running. Stop it first: `sudo systemctl stop postgresql`
+ 
+### Option B — Local WSL PostgreSQL
+ 
+Installed directly on Ubuntu. Used for development without Docker.
+ 
+```bash
+# Start
+sudo systemctl start postgresql
+ 
+# Connect
+psql -U postgres -d text_embeddings
+ 
+# Stop
+sudo systemctl stop postgresql
+```
+ 
+> ⚠️ If PostgreSQL fails to start with "port already in use", the Docker PostgreSQL is running. Stop it first with: `docker compose stop db`
 
 ---
 
