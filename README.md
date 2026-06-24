@@ -79,8 +79,12 @@ docker compose run --rm rag python3 src/populate_vector_db.py
 
 ## Databases
  
-This project has two PostgreSQL instances. Only one should run at a time.
- 
+### Schema
+![alt text](assets/image.png)
+
+
+*Note: This project has two PostgreSQL instances. Only one should run at a time.*
+
 ### Option A — Docker PostgreSQL (recommended)
  
 Runs as a container. Starts automatically and No manual installation needed.
