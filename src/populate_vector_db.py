@@ -1,8 +1,11 @@
 import os
 from ollama import Client
 from nltk.tokenize import sent_tokenize
-from embedding_db import get_psql_session, TextEmbedding
-
+try:
+    from .embedding_db import get_psql_session, TextEmbedding
+except ImportError:
+    from embedding_db import get_psql_session, TextEmbedding
+    
 def populate_vector_database(folder_path="./data/all_articles"):
 
     session = get_psql_session()

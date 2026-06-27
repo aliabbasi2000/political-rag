@@ -1,8 +1,11 @@
-from embedding_db import get_psql_session, TextEmbedding
 from ollama import Client
 from nltk.tokenize import sent_tokenize
 from sqlalchemy import text
 import os
+try:
+    from .embedding_db import get_psql_session, TextEmbedding
+except ImportError:
+    from embedding_db import get_psql_session, TextEmbedding
 
 query = "What is the human rights situation in Slovakia?"
 

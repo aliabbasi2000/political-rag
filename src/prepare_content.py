@@ -2,11 +2,15 @@
 Pull in more than 5 search results & then consulidate the overlapping results so that we have 5 unique context windows.
 """
 
-from embedding_db import get_psql_session, TextEmbedding
-from retrieve_db_content import search_embeddings, get_surrounding_sentences
 from ollama import Client
 from nltk.tokenize import sent_tokenize
 import os
+try:
+    from .embedding_db import get_psql_session, TextEmbedding
+    from .retrieve_db_content import search_embeddings, get_surrounding_sentences
+except ImportError:
+    from embedding_db import get_psql_session, TextEmbedding
+    from retrieve_db_content import search_embeddings, get_surrounding_sentences
 
 # Check If context window of current match overlaps with context window of existing matches.
 def _is_unique_match(existing_matches, current_match, group_window_size=5):
