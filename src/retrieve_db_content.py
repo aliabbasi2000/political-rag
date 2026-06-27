@@ -13,6 +13,61 @@ sentences = sent_tokenize(query)
 embeddings = client.embed(model="nomic-embed-text", input=sentences)["embeddings"]
 #print(embeddings[0])
 
+def group_entries(entry_ids, file_names, index_of_interest, group_window_size):
+    entry_id_of_interest = entry_ids[index_of_interest]
+    file_name_of_interest = file_names[index_of_interest]
+
+    group_idxs = [index_of_interest]
+
+    for idx, (entry_id, file_name) in enumerate(zip(entry_ids, file_names)):
+        if idx == index_of_interest:
+            continue
+        if file_name != file_name_of_interest:
+            continue
+        if (entry_id >= entry_id_of_interest - group_window_size) and (entry_id <= entry_id_of_interest + group_window_size):
+            group_idxs.append(idx)
+
+    return group_idxs
+
+
+def consolidate_groupings(grouped_entries):
+    original_groups = [list(group) for group in grouped_entries]
+    combined_groups = []
+
+    while original_groups:
+        current_grouping = list(original_groups.pop(0))
+        merged_group = set(current_grouping)
+
+        idx = 0
+        while idx < len(original_groups):
+            other_entry = set(original_groups[idx])
+            if merged_group & other_entry:
+                merged_group.update(other_entry)
+                original_groups.pop(idx)
+                idx = 0
+                continue
+            idx += 1
+
+        combined_groups.append(sorted(merged_group))
+
+    return combined_groups
+
+
+def get_min_max_ids(entry_ids, file_names, combined_groups, group_window_size):
+    min_ids = []
+    max_ids = []
+
+    for group in combined_groups:
+        group_entry_ids = [entry_ids[idx] for idx in group]
+        min_id = min(group_entry_ids) - group_window_size
+        max_id = max(group_entry_ids) + group_window_size
+
+        min_ids.append(min_id)
+        max_ids.append(max_id)
+
+    return min_ids, max_ids
+
+
 # Find the most similar sentence in the database to our query using cosine distance
 def search_embeddings(query_embedding, session, limit=5):
     
@@ -29,23 +84,34 @@ def search_embeddings(query_embedding, session, limit=5):
     result = session.execute(sql_query, {"query_embedding": query_embedding, "limit": limit})
     return result.fetchall()
 
+
 def get_surrounding_sentences(entry_ids, file_names, session, group_window_size=3):
+    if not entry_ids:
+        return []
+
+    grouped_entries = []
+    for idx in range(len(entry_ids)):
+        grouped_entries.append(group_entries(entry_ids, file_names, index_of_interest=idx, group_window_size=group_window_size))
+
+    combined_groups = consolidate_groupings(grouped_entries)
+    min_ids, max_ids = get_min_max_ids(entry_ids, file_names, combined_groups, group_window_size)
+
     surrounding_sentences = []
-    
-    # Fetch the entire surrounding window in a single query per entry_id to reduce the number of queries to the database
-    for entry_id, file_name in zip(entry_ids, file_names):
+    for group, min_id, max_id in zip(combined_groups, min_ids, max_ids):
+        file_name = file_names[group[0]]
         sql_query = text("""
             SELECT id, sentence_number, content, file_name
             FROM text_embeddings
-            WHERE id >= :min_id AND id <= :max_id AND file_name = :file_name
+            WHERE file_name = :file_name
+              AND id >= :min_id AND id <= :max_id
         """)
-        
+
         result = session.execute(sql_query, {
-            "min_id": entry_id - group_window_size, 
-            "max_id": entry_id + group_window_size,
-            "file_name": file_name
+            "file_name": file_name,
+            "min_id": min_id,
+            "max_id": max_id,
         })
-        
+
         surrounding_sentences.append(result.fetchall())
 
     return surrounding_sentences
