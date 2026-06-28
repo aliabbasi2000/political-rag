@@ -2,6 +2,11 @@
 
 A learning project for building a Retrieval-Augmented Generation (RAG) pipeline Ollama
 
+<p align="center">
+  <img src="assets/demo.gif" alt="Demo GIF" width="800">
+</p>
+
+
 ---
 
 
@@ -80,7 +85,7 @@ docker compose run --rm rag python3 src/populate_vector_db.py
 ## Databases
  
 ### Schema
-![alt text](assets/image.png)
+![alt text](assets/db_schema.png)
 
 
 *Note: This project has two PostgreSQL instances. Only one should run at a time.*
