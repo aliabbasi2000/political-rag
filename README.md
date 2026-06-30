@@ -26,6 +26,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 ollama pull qwen3:0.6b
 ollama pull nomic-embed-text
+ollama create custom_qwen -f ModelFile
 
 # listen on every network interface so Docker can reach Ollama
 OLLAMA_HOST=0.0.0.0 ollama serve
@@ -33,7 +34,7 @@ OLLAMA_HOST=0.0.0.0 ollama serve
 
 To verify the models are loaded:
 ```bash
-ollama run qwen3:0.6b
+ollama run custom_qwen
 ```
 
 ### Terminal B — Clone and set up the project
@@ -42,7 +43,7 @@ ollama run qwen3:0.6b
 git clone https://github.com/aliabbasi2000/rag-playground.git
 cd rag-playground
 
-python3 -m venv .venv
+python -m venv .venv
 source .venv/bin/activate
 
 pip install -r requirements.txt
@@ -64,20 +65,24 @@ cp .env.example .env
 
 ```bash
 source .venv/bin/activate 
-docker compose up db -d          # database must be running
-python3 main.py
+sudo systemctl start postgresql     # database must be running
+python src/generate_corpus.py      # wait for the program to finish 
+# check downloaded articles in data/all_articles
+python src/populate_vector_db.py    # wait for the program to finish 
+# check the database for the inserted vector embeddings
+python main.py                     # chat with the local RAG
 ```
 
 ### Option 2 — Run inside Docker
 
+For the first run, build the container and let it download the articles and generate the vector embeddings:
 ```bash
 docker compose up --build
 ```
 
-### Run a specific script in Docker
- 
+After the first run, start local RAG without initial setups
 ```bash
-docker compose run --rm rag python3 src/populate_vector_db.py
+docker compose run --rm rag python main.py
 ```
 
 ---
@@ -132,7 +137,7 @@ sudo systemctl stop postgresql
 1. Edit your .py files locally
          ↓
 2. Test quickly with local Python
-   python3 main.py
+   python main.py
          ↓
 3. When it works, run in Docker
    docker compose up --build
