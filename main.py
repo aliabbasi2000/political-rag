@@ -3,9 +3,14 @@ from ollama import Client
 
 from src.prepare_content import search_by_query
 
-query = input("Ask me about Politics (or press enter to tell you about the Politics in Italy): ")
+DEFAULT_QUERY = "Tell me about Politics in Italy."
+try:
+    query = input("Ask me about Politics (or press enter to tell you about the Politics in Italy): ")
+except EOFError:
+    query = DEFAULT_QUERY
+
 if not query or query.strip() == "":
-    query = "Tell me about Politics in Italy."
+    query = DEFAULT_QUERY
 
 while True:
   context = search_by_query(query)
@@ -26,7 +31,11 @@ while True:
 
   print(f"\n{response.message.content}\n")
 
-  new_query = input("\n Chat (or 'q' to quit): ")
+  try:
+    new_query = input("\n Chat (or 'q' to quit): ")
+  except EOFError:
+    new_query = 'q'
+
   if new_query.lower() != 'q':
     query = new_query
   else:

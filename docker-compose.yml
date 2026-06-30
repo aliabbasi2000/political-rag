@@ -23,7 +23,7 @@ services:
       - ./data:/app/data
     environment:
       - OLLAMA_HOST=http://host.docker.internal:11434
-      - OLLAMA_MODEL=qwen3:0.6b
+      - OLLAMA_MODEL=custom_qwen
       - DB_HOST=db
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
