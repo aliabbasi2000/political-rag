@@ -1,9 +1,15 @@
-# RAG Playground
+# Political RAG
 
-A learning project for building a Retrieval-Augmented Generation (RAG) pipeline Ollama
+A Retrieval-Augmented Generation (RAG) system built from scratch, without frameworks like LangChain, focusing on politics. 
+
+This system generates a corpus from Wikipedia articles on political topics, stores sentence embeddings in PostgreSQL with pgvector, and uses prompt engineering to answer questions using a local LLM running on your machine with no external API calls. Containerized with Docker for a portable deployment.
+
+
 
 <p align="center">
-  <img src="assets/demo.gif" alt="Demo GIF" width="800">
+  <img src="assets/demo2.gif" alt="Demo of Political RAG answering a question about political topics" width="800">
+  <br/>
+  <em>Querying the RAG pipeline with political questions</em>
 </p>
 
 
