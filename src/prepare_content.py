@@ -25,6 +25,15 @@ def _is_unique_match(existing_matches, current_match, group_window_size=5):
 
 
 def get_filtered_matches(search_results, group_window_size=5):
+    """Keep only a small set of non-overlapping matches.
+
+    Args:
+        search_results: Search results to filter.
+        group_window_size: Window size used to avoid nearby duplicates.
+
+    Returns:
+        A list of up to five unique matches.
+    """
     unique_count = 0
     matches = []
     for result in search_results:
@@ -37,6 +46,16 @@ def get_filtered_matches(search_results, group_window_size=5):
 
 
 def search_by_query(query, num_matches=5, group_window_size=5):
+    """Search the database for relevant context around a user query.
+
+    Args:
+        query: The user query to embed and search for.
+        num_matches: Number of candidate matches to collect before filtering.
+        group_window_size: Window size used to merge nearby matches.
+
+    Returns:
+        Surrounding sentences for the selected matches as context blocks.
+    """
     session = get_psql_session()
     host = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
     client = Client(host=host)

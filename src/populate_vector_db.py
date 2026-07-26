@@ -7,6 +7,14 @@ except ImportError:
     from embedding_db import get_psql_session, TextEmbedding
     
 def populate_vector_database(folder_path="./data/all_articles"):
+    """Create embeddings for each sentence of articles and save them to the database.
+
+    Args:
+        folder_path: Directory containing article text files.
+
+    Returns:
+        None.
+    """
 
     session = get_psql_session()
     host = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
