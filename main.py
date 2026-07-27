@@ -1,7 +1,7 @@
 import os
 from ollama import Client
 
-from src.prepare_content import search_by_query
+from src.prepare_content import search_by_query, format_context
 
 DEFAULT_QUERY = "Tell me about Politics in Italy."
 try:
@@ -14,10 +14,18 @@ if not query or query.strip() == "":
 
 while True:
   context = search_by_query(query)
+  prepared_context = format_context(context)
 
-  prompt = f"<|content_start> {context}<|content_end> {query}"
+  prompt = f"""
+  You must answer using only the context below.
+  If a user askes for the source of the fact, you have to Answer with citations. Cite it inline using the matching source label exactly as shown.
+
+  <|content_start>
+  {prepared_context}
+  <|content_end>
+
+  Question: {query}"""
   #print(f"\nPrompt:\n{prompt}\n")
-
 
   host = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
   client = Client(host=host)

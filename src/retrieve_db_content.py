@@ -127,6 +127,7 @@ def search_embeddings(query_embedding, session, limit=5):
     result = session.execute(sql_query, {"query_embedding": query_embedding, "limit": limit})
     return result.fetchall()
 
+
 def get_surrounding_sentences(entry_ids, file_names, session, group_window_size=3):
     """Fetch nearby sentences around each matched result.
 
@@ -158,6 +159,7 @@ def get_surrounding_sentences(entry_ids, file_names, session, group_window_size=
             FROM text_embeddings
             WHERE file_name = :file_name
               AND id >= :min_id AND id <= :max_id
+            ORDER BY sentence_number
         """)
 
         result = session.execute(sql_query, {
