@@ -18,7 +18,9 @@ while True:
 
   prompt = f"""
   You must answer using only the context below.
-  If a user askes for the source of the fact, you have to Answer with citations. Cite it inline using the matching source label exactly as shown.
+  If the context is sufficient, answer directly and do not add any disclaimer or refusal sentence.
+  If the context is not sufficient, say exactly: I cannot answer from the provided context.
+  When you use a fact from the context, cite it inline using the matching source label exactly as shown.
 
   <|content_start>
   {prepared_context}
