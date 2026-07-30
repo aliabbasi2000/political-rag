@@ -14,7 +14,9 @@ if not query or query.strip() == "":
 
 while True:
   context = search_by_query(query)
+  #print(f"\nRetrieved context:\n{context}\n")
   prepared_context = format_context(context)
+  #print(f"\nPrepared context:\n{prepared_context}\n")
 
   prompt = f"""
   You must answer using only the context below.
