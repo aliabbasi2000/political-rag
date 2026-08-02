@@ -1,0 +1,355 @@
+France is a semi-presidential system determined by the Constitution of the Fifth Republic. The nation declares itself to be an "indivisible, secular, democratic, and social Republic". The constitution provides for a separation of powers and proclaims France's "attachment to the Rights of Man and the principles of National Sovereignty as defined by the Declaration of 1789".
+The political system of France consists of an executive branch, a legislative branch, and a judicial branch. Executive power is exercised by the president of the republic and the Government. The Government consists of the prime minister and ministers. The prime minister is appointed by the president, and is responsible to Parliament. The government, including the prime minister, can be revoked by the National Assembly, the lower house of Parliament, through a motion of no-confidence; this ensures that the prime minister is practically always supported by a majority in the lower house (which, on most topics, has prominence over the upper house).
+Parliament consists of the National Assembly and the Senate. It passes statutes and votes on the budget; it controls the action of the executive through formal questioning on the floor of the houses of Parliament and by establishing commissions of inquiry. The constitutionality of the statutes is checked by the Constitutional Council, members of which are appointed by the president of the republic, the president of the National Assembly, and the president of the Senate. Former presidents of the Republic can also be members of the Council if they wish (Valéry Giscard d'Estaing and Jacques Chirac are the only former presidents to have participated in the Council's work).
+The independent judiciary is based upon civil law system which evolved from the Napoleonic Codes. It is divided into the judicial branch (dealing with civil law and criminal law) and the administrative branch (dealing with appeals against executive decisions), each with their own independent supreme court of appeal: the Court of Cassation for the judicial courts and the Conseil d'Etat for the administrative courts. The French government includes various bodies that check abuses of power and independent agencies.
+While France is a unitary state, its administrative subdivisions—regions, departments and communes—have various legal functions, and the national government is prohibited from intruding into their normal operations. France was a founding member of the European Coal and Steel Community, later the European Union. As such, France has transferred part of its sovereignty to European institutions, as provided by its constitution. The French government therefore has to abide by European treaties, directives and regulations. According to the V-Dem Democracy indices France was in 2023 the 10th most electoral democratic country in the world.
+
+
+== Constitution ==
+
+A popular referendum approved the constitution of the French Fifth Republic in 1958, greatly strengthening the authority of the presidency and the executive with respect to Parliament.
+The constitution does not contain a bill of rights in itself, but its preamble mentions that France should follow the principles of the Declaration of the Rights of Man and of the Citizen, as well as those of the preamble to the constitution of the Fourth Republic. This has been judged to imply that the principles laid forth in those texts have constitutional value, and that legislation infringing on those principles should be found unconstitutional if a recourse is filed before the Constitutional Council. Also, recent modifications of the Constitution have added a reference in the preamble to an Environment charter that has full constitutional value, and a right for citizens to contest the constitutionality of a statute before the Constitutional Council.
+The foundational principles of the constitution include: the equality of all citizens before law, and the rejection of special class privileges such as those that existed prior to the French Revolution; presumption of innocence; freedom of speech; freedom of opinion including freedom of religion; the guarantee of property against arbitrary seizure; the accountability of government agents to the citizenry.
+
+
+== Executive ==
+
+France has a semi-presidential system of government, with both a president and a prime minister. The prime minister is responsible to the French Parliament. A presidential candidate is required to obtain a nationwide majority of non-blank votes at either the first or second round of balloting, which implies that the president is somewhat supported by at least half of the voting population.
+
+
+=== President ===
+As a consequence, the president of France is the pre-eminent figure in French politics. He appoints the prime minister and chairs the Council of Ministers (Cabinet meeting). Though the president may not de jure dismiss the prime minister, nevertheless, if the prime minister is from the same political side, they can, in practice, have them resign on demand (De Gaulle is said to have initiated this practice "by requiring undated letters of resignation from his nominees to the premiership," though more recent presidents have not necessarily used this method). The president appoints the ministers, ministers-delegate and secretaries on the prime minister's proposal. When the president's political party or supporters control parliament, the president is the dominant player in executive action, choosing whomever he wishes for the government, and having it follow his political agenda (parliamentary disagreements do occur, though, even within the same party).
+However, when the president's political opponents control parliament, the president's dominance can be severely limited, as they must choose a prime minister and government who reflect the majority in parliament, and who may implement the agenda of the parliamentary majority. When parties from opposite ends of the political spectrum control parliament and the presidency, the power-sharing arrangement is known as cohabitation. Before 2002, cohabitation occurred more commonly, because the term of the president was seven years and the term of the National Assembly was five years. With the term of the president shortened to five years, and with the presidential and parliamentary elections separated by only a few months, this is less likely to happen.
+Emmanuel Macron became president on 14 May 2017, succeeding François Hollande. In the 2022 presidential election President Macron was re-elected after beating his far-right rival, Marine Le Pen, in the runoff. He was the first re-elected incumbent French president since 2002.
+
+
+=== Government ===
+The prime minister leads the government, which comprises junior and senior ministers. It has at its disposal the civil service, government agencies, and the armed forces. The government is responsible to Parliament, and the National Assembly may pass a motion of censure, forcing the resignation of the government. This, in practice, forces the government to reflect the same political party or coalition which has the majority in the Assembly. Ministers have to answer questions from members of Parliament, both written and oral; this is known as the questions au gouvernement ("questions to the government"). In addition, ministers attend meetings of the houses of Parliament when laws pertaining to their areas of responsibility are being discussed.
+Government ministers cannot pass legislation without parliamentary approval, though the prime minister may issue autonomous regulations or subordinated regulations (décrets d'application) provided they do not infringe on the Parliament domain, as detailed in the constitution. Ministers, however, can propose legislation to Parliament; since the Assembly is usually politically allied to the ministers, such legislation is, in general, very likely to pass (unless there is a hung parliament). However, this is not guaranteed, and, on occasion, the opinion of the majority parliamentarians may differ significantly from those of the executive, which often results in a large number of amendments.
+The prime minister can commit the government's responsibility on a bill (effectively treating the bill as an issue of a confidence vote), under the provisions of article 49.3 of the Constitution. The bill is then considered passed unless the National Assembly votes a motion of no-confidence (French: motion de censure), in which case the bill is defeated and the government has to resign. As of 2006, the use of this article was the "First Employment Contract" proposed by Prime Minister Dominique de Villepin, a move that greatly backfired.
+Traditionally, the government comprises members of three ranks. Ministers are the most senior members of the government; deputy ministers (ministres délégués) assist ministers in particular areas of their portfolio; state secretaries (secrétaires d'État) assist ministers in less important areas, and attend government meetings only occasionally. Before the founding of the Fifth Republic in 1958, some ministers of particular political importance were called "Ministers of State" (ministres d'État); the practice has continued under the Fifth Republic in a mostly honorific fashion: ministers styled "Minister of State" are of higher importance in the gouvernement and have the ability to deputize for the PM and the authority to hold inter-ministerial meetings.
+The number of ministries and the division of responsibilities and administrations between them varies from government to government. While the name and exact responsibility of each ministry may change, one generally finds at least: 
+
+Ministry for the Economy, Industry and Employment (taxes, budget)
+Ministry of the Interior (law enforcement, relationships with local governments)
+Ministry of Justice and Keeper of the Seals (prisons, running the court system, supervision of the prosecution service)
+Ministry of National Education
+Ministry of Defence
+Ministry of Foreign Affairs
+Ministry of Transportation
+(For more on French ministries, see French government ministers.)
+The government has a leading role in shaping the agenda of the houses of Parliament. It may propose laws to Parliament, as well as amendments during parliamentary meetings. It may make use of some procedures to speed up parliamentary deliberations.
+The government holds weekly meetings (usually on Wednesday mornings): this weekly meeting, known as the Council of Ministers, is chaired by the president and usually takes place at the Élysée Palace. The Council of Ministers is the executive's formal decision-making body since government bills need to be approved by the Council to be introduced in Parliament, some decrees are signed during the meeting (decrees in Council of Ministers) and some constitutional powers have to be approved by the Council beforehand to be invoked.
+The current French prime minister is Sébastien Lecornu since 9 September 2025.
+
+
+=== Statutory instruments and delegated legislation ===
+The French executive has a limited power to establish regulation or legislation. (See below for how such regulations or legislative items interact with statute law.)
+
+
+==== Decrees and other executive decisions ====
+Only the president and prime minister sign decrees (décrets), which are akin to US executive orders. Decrees can only be taken following certain procedures and with due respect to the constitution and statute law.
+
+The president signs decrees appointing and dismissing most senior civil and military servants, for positions listed in the Constitution or in statutes. He also signs decrees establishing some regulations (décrets en conseil des ministres). All such decrees must be countersigned by the prime minister and the ministers concerned.
+The prime minister signs decrees establishing regulations, which the concerned ministers countersign. In some areas, they constitute primary legislation, in some others they must be subordinate to an existing statute. In some cases, statutes impose a compulsory advisory review by the Conseil d'État (décrets en Conseil d'État), as opposed to décrets simples.
+The individual ministers issue ministerial orders (arrêtés) in their fields of competence, subordinate to statutes and decrees.
+Contrary to a sometimes used polemical cliché, that dates from the French Third Republic of 1870–1940, with its decrees-law (décrets-lois), neither the president nor the prime minister may rule by decree (outside of the narrow case of presidential emergency powers).
+
+
+==== Ordinances ====
+
+The executive cannot issue decrees in areas that the Constitution puts under the responsibility of legislation, issued by Parliament. Still, Parliament may, through a habilitation law, authorize the executive to issue ordinances (ordonnances), with legislative value, in precisely defined areas. Habilitation laws specify the scope of the ordinance. After the ordinance is issued, the government has to propose a ratifying bill in order that the ordinance becomes a law. If Parliament votes "no" to ratification, the ordinance is cancelled. Most of the time, ratification is made implicitly or explicitly through a Parliament act that deals with the subject concerned, rather than by the ratification act itself.
+The use of ordinances is normally reserved for urgent matters, or for technical, uncontroversial texts (such as the ordinances that converted all sums in French francs to euros in the various laws in force in France). There is also a practice of using ordinances to transpose European Directives into French law, to avoid late transposition of Directives, which happens often and is criticized by the EU Commission. Ordinances are also used to codify law into codes – to rearrange them for the sake of clarity without substantially modifying them. They are also sometimes used to push controversial legislation through, such as when Prime Minister Dominique de Villepin created new forms of work contracts in 2005. The opposition then criticizes the use of ordinances in such contexts as anti-democratic and demeaning to Parliament. Note however that since the National Assembly can dismiss the government through a motion of censure, the government necessarily relies on a majority in Parliament, and this majority would be likely to adopt the controversial law anyway.
+
+
+=== Internal limits of the executive branch; checks and balances ===
+The general rule is that government agencies and the civil service are at the disposal of the government. However, various agencies are independent agencies (autorités administratives indépendantes) that have been statutorily excluded from the executive's authority, although they belong in the executive branch.
+These independent agencies have some specialized regulatory power, some executive power, and some quasi-judicial power. They are also often consulted by the government or the French Parliament seeking advice before regulating by law. They can impose sanctions that are named "administrative sanctions" sanctions administratives. However, their decisions can still be contested in a judicial court or in an administrative court.
+Some examples of independent agencies:
+
+The Banque de France, the central bank, is independent (financial and economic code, L141 and following). This was a prerequisite for integrating the European System of Central Banks.
+The Electronic Communications & Posts Regulation Authority (Autorité de régulation des communications électroniques et des postes (ARCEP)), which was previously named Telecommunication Regulation Authority (Autorité de régulation des télécommunications (ART)), is an independent administrative authority for the open markets of telecommunications and postal services.
+The Energy Regulation Commission (Commission de régulation de l'énergie (CRE)) is an independent administrative authority for the open markets of gas and electricity.
+The Financial Markets Authority (Autorité des marchés financiers (AMF)) regulates securities markets.
+The Higher Council of the Audiovisual (Conseil supérieur de l'audiovisuel (CSA)) supervises the granting and withdrawing of emission frequencies for radio and television, as well as public broadcasting.
+The National Commission on Campaign Accounts and Political Financing (Commission Nationale des Comptes de Campagne et des Financements Politiques) regulates the financing and spending of political parties and political campaigning.
+Public media corporations should not be influenced in their news reporting by the executive in power, since they have the duty to supply the public with unbiased information. For instance, the Agence France-Presse (AFP) is an independent public corporation. Its resources must come solely from its commercial sales. The majority of the seats in its board are held by representatives of the French press.
+The government also provides for watchdogs over its own activities; these independent administrative authorities are headed by a commission typically composed of senior lawyers or of members of the Parliament. Each of the two chambers of the Parliament often has its own commission, but sometimes they collaborate to create a single Commission nationale mixte paritaire. For example:
+
+The National Commission for Computing & Freedom (Commission nationale informatique et libertés (CNIL)); public services must request authorization from it before establishing a file with personal information, and they must heed its recommendations; private bodies must only declare their files; citizens have recourse before the commission against abuses.
+The National Commission for the Control of Intelligence Techniques (Commission nationale de contrôle des techniques de renseignement, CNCTR) replaced the CNCIS in 2015. It is an independent authority that oversees and advises on the legality of intelligence techniques such as wiretaps, geolocation, and metadata collection requested by the executive for national security purposes.These techniques must be authorized by the Prime Minister after receiving the CNCTR’s opinion.
+In addition, the duties of public service limit the power that the executive has over the French Civil Service. For instance, appointments, except for the highest positions (the national directors of agencies and administrations), must be made solely on merit (typically determined in competitive exams) or on time in office. Certain civil servants have statuses that prohibit executive interference; for instance, judges and prosecutors may be named or moved only according to specific procedures. Public researchers and university professors enjoy academic freedom; by law, they enjoy complete freedom of speech within the ordinary constraints of academia.
+
+
+=== Some important directorates and establishments ===
+The government also provides specialized agencies for regulating critical markets or limited resources, and markets set up by regulations. Although, as part of the administration, they are subordinate to the ministers, they often act with a high degree of independence.
+
+The General Directorate of Competition, Consumption & Repression of Frauds (Direction générale de la concurrence, de la consommation et de la répression des fraudes (DGCCRF)) regulates and controls the legality and safety of products and services available on the markets open to competition for all economic actors and private consumers, and can deliver administrative sanctions in case of abuses.
+The General Directorate of Civil Aviation (Direction générale de l'aviation civile (DGAC)) regulates the traffic in the national air space and delivers the authorizations for airways companies and other private or public organizations and people.
+The National Agency for Employment (Agence nationale pour l'emploi (ANPE)) maintained a public registry for the allocation of social benefits to unemployed people (but now a single registry is shared with the independent ASSEDIC paying them, a joint association of employers and workers unions), assists them as well as employers seeking people, and controls them. The French State names its general director and the Parliament provides for its finances and personnel, but it only fills one-third of the seats at its decision board of directors (the other seats are shared equally by unions of employers and of workers). ANPE and Assédic merged in 2008 to form Pôle emploi.
+The National Agency of Frequencies (Agence nationale des fréquences (ANFR)), a public establishment of an administrative character, regulates and maintains the allocation of radio frequency spectrum resources along with other international frequencies regulators and national regulators (the ARCOM (ex-CSA) and ARCEP) or public ministries, controls the operators on the national territory, and publishes compliance standards for manufacturers of radioelectric equipment.
+
+
+=== Organization of government services ===
+Each ministry has a central administration (administration centrale), generally divided into directorates. These directorates are usually subdivided into divisions or sub-directorates. Each directorate is headed by a director, named by the President in Council. The central administration largely stays the same, regardless of the political tendency of the executive in power.
+In addition, each minister has a private office, which is composed of members whose nomination is politically determined, called the cabinet. Cabinets are quite important and employ numbers of highly qualified staff to follow all administrative and political affairs. They are powerful, and have been sometimes considered as a parallel administration, especially (but not only) in all matters that are politically sensitive. Each cabinet is led by a chief-of-staff entitled directeur de cabinet.
+The state also has distributive services spread throughout French territory, often reflecting divisions into régions or départements. The prefect, the representative of the national government in each région or département, supervises the activities of the distributive services in his or her jurisdiction. Generally, the services of a certain administration in a région or département are managed by a high-level civil servant, often called director, but not always; for instance, the services of the Trésor public (Treasury) in each département are headed by a treasurer-paymaster general, appointed by the president of the republic. In the last several decades, the departmental conseil général (see "Local Government" below) has taken on new responsibilities and plays an important role in administering government services at the local level.
+The government also maintains public establishments. These have a relative administrative and financial autonomy, to accomplish a defined mission. They are attached to one or more supervising authorities. These are classified into several categories:
+
+public establishments of an administrative character, including, for instance:
+universities, and most public establishments of higher education
+establishments of a research and technical character, such as CNRS or INRIA
+public establishments of an industrial and commercial character, including, for instance, CEA and Ifremer
+Note that in administrations and public establishments of an administrative character operate under public law, while establishments of an industrial and commercial character operate mostly under private law. In consequence, in the former, permanent personnel are civil servants, while normally in the latter, they are contract employees.
+In addition, the government owns and controls all, or the majority, of shares of some companies, like Electricité de France, SNCF or Areva.
+Social security organizations, though established by statute and controlled and supervised by the state, are not operated nor directly controlled by the national government. Instead, they are managed by the "social partners" (partenaires sociaux) – unions of employers such as the MEDEF and unions of employees. Their budget is separate from the national budget.
+
+
+== Shadow Cabinet of France ==
+A Shadow Cabinet is sometimes formed by the opposition parties in the National Assembly, though this is uncommon.
+
+
+== Legislative branch ==
+
+The Parliament of France, making up the legislative branch, consists of two houses: the National Assembly and the Senate; the National Assembly is the pre-eminent body.
+Parliament meets for one nine-month session each year: under special circumstances the president can call an additional session. Although parliamentary powers have diminished from those existing under the Fourth Republic, the National Assembly can still cause a government to fall if an absolute majority of the total Assembly membership votes to censure. It has happened twice under the 5th Republic: in 1962 against the government of George Pompidou and in 2024 against the government of Michel Barnier.
+The government has a strong influence in shaping the agenda of Parliament (the cabinet has control over the parliamentary order of business 50% of the time, 2 out of 4 weeks per month). The government can also 'commit its responsibility' on a bill it has proposed (effectively treating the bill as an issue of a vote of confidence), and unless a motion of no confidence is introduced (within 24 hours after the proposal) and passed (within 48 hours of introduction – thus full procedures last at most 72 hours), the bill is considered adopted without a vote.
+Members of Parliament enjoy parliamentary immunity. Both assemblies have committees that write reports on a variety of topics. If necessary, they can establish parliamentary enquiry commissions with broad investigative power.
+
+
+=== National Assembly ===
+
+The National Assembly is the principal legislative body. Its 577 deputies are directly elected for five-year terms in local majority votes, and all seats are voted on in each election.
+The National Assembly may force the resignation of the government by voting a motion of censure. For this reason, the prime minister and their government are necessarily from the dominant party or coalition in the assembly. In the case of a president and assembly from opposing parties, this leads to the situation known as cohabitation. While motions of censure are periodically proposed by the opposition following government actions that it deems highly inappropriate, they are usually purely rhetorical; party discipline ensures that, throughout a parliamentary term, the government is never overthrown by the Assembly provided that the governing party/coalition has a working majority in the Chamber (which is no longer the case for the current ruling coalition as a result of the 2022 legislative election).
+
+
+==== Latest election ====
+
+The June 2022 legislative election saw President Macron's centrist coalition (ENS) losing its working majority in the National Assembly: enjoying a 115-seat majority before the election, the governing coalition was reduced to being the largest bloc in a hung parliament, falling 38 short of an overall majority.
+By contrast, a far-left-to-centre-left coalition (NUPES) increased its total number of seats to 151 and a right-wing populist party (RN) won a record number of seats, going from 8 to 89 MPs, thus becoming the largest opposition party in Parliament.
+A centre-right-to-right-wing party (LR) was left holding the balance of power in this hung parliament.
+
+
+=== Senate ===
+
+Senators are chosen by an electoral college of about 165,000 local elected officials for six-year terms, and half of the Senate is renewed every three years. Before the law of 30 July 2004, senators were elected for nine years, renewed by thirds every three years. There are currently 348 senators: 326 represent the metropolitan and overseas départements, 10 the other dependencies and 12 the French established abroad.
+The Senate's legislative powers are limited; on most matters of legislation, the National Assembly has the last word in the event of a disagreement between the two houses.
+Since the beginning of the Fifth Republic, the Senate has almost always had a right-wing majority. This is mostly due to the over-representation of small villages compared to big cities. This, and the indirect mode of election, prompted socialist Lionel Jospin, who was prime minister at the time, to declare the Senate an "anomaly".
+
+
+=== Legislation adoption procedures ===
+Statute legislation may be proposed by the government (council of ministers), or by members of Parliament. In the first case, it is a projet de loi (English: government bill); in the latter case, a proposition de loi (English: private members' bill).
+All projets de loi must undergo compulsory advisory review by the Conseil d'État before being submitted to parliament. Since 2009, the bill submitted to Parliament must also come with a study of the possible impact of the law: other possible options, interactions with European law, economical, social, financial and environmental consequences.
+Propositions de loi cannot increase the financial load of the state without providing for funding.
+Projets de loi start in the house of the government's choice (except in some narrow cases). Propositions de loi start in the house where they originated. After the house has amended and voted on the text, it is sent to the other house, which can also amend it. If the houses do not choose to adopt the text in identical terms, it is sent before a commission made of equal numbers of members of both houses, which tries to harmonize the text. If it does not manage to do so, the National Assembly can vote the text and have the final say on it (except for laws related to the organization of the Senate).
+The law is then sent to the president of France for signature. At this point, the president of France, the speaker of either house or a delegation of 60 deputies or 60 senators can ask for the text to undergo constitutional review before being put into force; it is then sent before the Constitutional Council. The president can also, only once per law and with the countersigning of the prime minister, send the law back to parliament for another review. Otherwise, the president must sign the law. After being countersigned by the prime minister and the concerned ministers, it is then sent to the Journal Officiel for publication.
+
+
+=== Budget ===
+
+Financing Acts (lois de finances) and the Social Security Financing Acts (lois de financement de la sécurité sociale) are special Acts of Parliament voted and approved through specific procedures.
+Because of the importance of allowing government and social security organizations to proceed with the payment of their suppliers, employees, and recipients, without risk of a being stopped by parliamentary discord, these bills are specially constrained. In the past, parliamentarians would often add unrelated amendments (cavaliers budgétaires) to the finance bills, to get such amendments passed – because of the reduced time in which the budget is examined. These are now considered unconstitutional. If Parliament cannot agree on a budget within some specified reasonable bounds, the government is entitled to adopt a budget through ordinances: this threat prevents parliamentarians from threatening to bankrupt the executive.
+The way the Finance Bill is organized, and the way the government has to execute the budget, were deeply reformed in 2001 by the Loi organique n°2001-692 du 1er août 2001 relative aux lois de finances, generally known as the LOLF. Because of the major changes involved, the application of the law was gradual, and the first budget to be fully passed under LOLF will be the 2006 budget, passed in late 2005.
+The LOLF divides expenses according to identifiable "missions" (which can be subdivided into sub-missions etc.). The performance of the administration and public bodies will be evaluated with respect to these missions.
+The budget of the national government was forecast to be 290 billion Euro in 2011. This includes neither Social Security, nor the budgets of local governments.
+
+
+=== Multiple offices ===
+
+It has long been customary for Parliament members to hold, in addition to the office of deputy or senator, another local office such as city mayor, hence titles like "Deputy and Mayor" (député-maire) and "Senator and Mayor" (sénateur-maire). This is known as the cumul of electoral offices. Proponents of the cumul allege that having local responsibilities ensures that members of parliament stay in contact with the reality of their constituency; also, they are said to be able to defend the interest of their city etc. better by having a seat in parliament.
+In recent years, the cumul has been increasingly criticized. Critics contend that lawmakers that also have some local mandate cannot be assiduous to both tasks; for instance, they may neglect their duties to attend parliamentary sittings and commission in order to attend to tasks in their constituency. The premise that holders of dual office can defend the interest of their city etc. in the National Parliament is criticized in that national lawmakers should have the national interest in their mind, not the advancement of the projects of the particular city they are from. Finally, this criticism is part of a wider criticism of the political class as a cozy, closed world in which the same people make a long career from multiple positions.
+As a consequence, laws that restrict the possibilities of having multiple mandates have been enacted.
+
+
+=== Economic and Social Council ===
+
+The Economic and Social Council is a consultative assembly. It does not play a role in the adoption of statutes and regulations, but advises the lawmaking bodies on questions of social and economic policies.
+The executive may refer any question or proposal of social or economic importance to the Economic and Social Council.
+The Economic and Social Council publishes reports, which are sent to the prime minister, the National Assembly and the Senate. They are published in the Journal Official.
+
+
+== Judicial branch ==
+
+The most distinctive feature of the French judicial system is that it is divided into judicial and administrative streams. French law provides for a separate judicial branch with an independent judiciary which does not answer to or is directly controlled by the other two branches of government. France has a civil law legal system, the basis of which is codified law; however, case law plays a significant role in the determination of the courts.
+
+
+=== Judicial courts ===
+The judicial stream of courts adjudicates civil and criminal cases. The judicial court stream consists of inferior courts, intermediate appellate courts, and the French Court of Cassation, the supreme court.
+Judges are government employees but are granted special statutory protection from the executive. Judges have security of tenure and may not be promoted (or demoted) without their consent. Their careers are overseen by the Judicial Council of France.
+The public prosecutors, on the other hand, take orders from the Minister of Justice. In the past, this has bred suspicion of undue political pressure to dismiss suits or claims against government officials charged with corruption, and the status of public prosecutors and their ties to government are frequently topics of debate.
+Trial by jury is available only for severe criminal cases, which are the jurisdiction of the Courts of Assizes. A full Court is made up of a 3-judge panel and a petty jury of 9 jurors (vs. 12 jurors on appeal), who, together, render verdicts, and if a conviction is handed down, also determine a sentence. Jurors are selected at random from eligible voters.
+In most other courts, judges are professional, except that the criminal court for minors is composed of one professional and two lay judges. Also, several specialty courts of original jurisdiction are sat by judges who are elected into office. For instance, labor tribunals are staffed with an equal number of magistrates from employers' unions and employees' unions. The same applies to land estate tribunals.
+Pre-trial proceedings are inquisitorial by nature, but open court proceedings are adversarial. The burden of proof in criminal proceedings is on the prosecution, and the accused is constitutionally presumed innocent until proven guilty.
+
+
+=== Administrative courts ===
+
+Courts of administrative law adjudicate on claims and suits against government offices and agencies. The administrative stream is made up of administrative courts, courts of administrative appeal, and the Council of State as the court of last resort.
+The Council of State hears cases against executive branch decisions and has the power to quash or set aside executive-issued statutory instruments such as orders and regulations when they violate constitutional law, enacted legislation, or codified law.
+Court proceedings mostly involve written hearings and are inquisitorial, with judges having the parties submit written testimony or arguments.
+Any jurisdictional dispute between the judicial and administrative streams are settled by a special court called Tribunal des conflits, or "Court of Jurisdictional Dispute", composed of an equal number of Supreme Court justices and councillors of State.
+
+
+=== Constitutional Council ===
+
+Neither judicial nor administrative courts are empowered to rule on the constitutionality of acts of Parliament. While technically not part of the judicial branch, the Constitutional Council examines legislation and decides whether or not it violates the Constitution. This applies, prior to their enactment, to all forms of organic laws, but only by referral from the French president, president of the Senate, president of the National Assembly, the prime minister, or any of the 60 senators or 60 assembly members of the other types of laws or treaties. After their enactment, laws can all be reviewed by referral from the highest administrative court, the Conseil d'Etat, or by the highest judicial court, the Cour de Cassation. The Constitutional Council may declare acts to be unconstitutional, even if they contradict the principles of the 1789 Declaration of the Rights of Man and of the Citizen (cited in the Preamble of the Constitution).
+Council members to the Constitutional Council are appointed for nine years (three every three years); three are appointed by the president, three by the president of the National Assembly, and three by the president of the Senate. The former presidents are also members for life of the Constitutional Council.
+
+
+=== Financial courts ===
+France's main Court of Audit (Cour des Comptes) and regional audit courts audit government finances, public institutions (including other courts), and public entities. The court publishes an annual report and can refer criminal matters to public prosecutors. It can also directly fine public accountants for mishandling funds, and refer civil servants who misused funds to the Court of Financial and Budgetary Discipline.
+The main and regional audit courts do not judge the accountants of private organizations. However, in some circumstances, they may audit their accounting, especially when an organization has been awarded a government contract over a public utility or a service requiring the permanent use of the public domain or if an organization is a bidder on a government contract. The Court is often solicitated by various state agencies, parliamentary commissions, and public regulators, but it can also be petitioned to act by any French citizen or organization operating in France.
+The Court's finances are overseen by financial commissions of the two Houses of the French Parliament which also set the Court's working budget in the annual Act of finances.
+
+
+== Ombudsman ==
+In 1973 the position of médiateur de la République (the Republic's ombudsman) was created. The ombudsman is charged with solving, without the need to a recourse before the courts, the disagreements between citizens and the administrations and other entities charged with a mission of a public service; proposing reforms to the Government and the administrations to further these goals; and actively participating in the international promotion of human rights.
+In 2008, the office was enshrined in the French Constitution and three years later, in 2011, it was renamed Défenseur des droits (Defender of Rights).
+The ombudsman is appointed for a period of six years by the president of the republic in the Council of Ministers. He cannot be removed from office and is protected for his official actions by an immunity similar to parliamentary immunity. He does not receive or accept orders from any authority. The current ombudsman is Claire Hédon.
+
+
+== French law ==
+
+
+=== Basic principles ===
+
+France uses a civil law system; that is, law arises primarily from written statutes; judges are not to make law, but merely to interpret it (though the amount of judge interpretation in certain areas makes it equivalent to case law).
+Many fundamental principles of French Law were laid in the Napoleonic Codes. Basic principles of the rule of law were laid in the Napoleonic Code: laws can only address the future and not the past (ex post facto laws are prohibited); to be applicable, laws must have been officially published (see Journal Officiel).
+In agreement with the principles of the Declaration of the Rights of Man and of the Citizen, the general rule is that of freedom, and law should only prohibit actions detrimental to society. As Guy Canivet, first president of the Court of Cassation, said about what should be the rule in French law:
+
+Freedom is the rule, and its restriction is the exception; any restriction of Freedom must be provided for by Law and must follow the principles of necessity and proportionality.
+That is, law may lay out prohibitions only if they are needed, and if the inconveniences caused by this restriction do not exceed the inconveniences that the prohibition is supposed to remedy.
+France does not recognize religious law, nor does it recognize religious beliefs as a motivation for the enactment of prohibitions. As a consequence, France has long had neither blasphemy laws nor sodomy laws (the latter being abolished in 1789).
+
+
+=== Statutory law versus executive regulations ===
+French law differentiates between legislative acts (loi), generally passed by the legislative branch, and regulations (règlement, instituted by décrets), issued by the prime minister. There also exist secondary regulation called arrêtés, issued by ministers, subordinates acting in their names, or local authorities; these may only be taken in areas of competency and within the scope delineated by primary legislation. There are also more regulations issued by independent agencies, especially relating to economic matters.
+According to the Constitution of France (article 34):
+Statutes shall concern:
+
+Civic rights and the fundamental guarantees granted to citizens for the exercise of their public liberties; the obligations imposed for the purposes of national defence upon citizens in respect of their persons and their property;
+Nationality, the status and legal capacity of persons, matrimonial regimes, inheritance and gifts;
+The determination of serious crimes and other major offences and the penalties applicable to them; criminal procedure; amnesty; the establishment of new classes of courts and tribunals and the regulations governing the members of the judiciary;
+The base, rates and methods of collection of taxes of all types; the issue of currency.
+Statutes shall likewise determine the rules concerning:
+
+The electoral systems of parliamentary assemblies and local assemblies;
+The creation of categories of public establishments;
+The fundamental guarantees granted to civil and military personnel employed by the State;
+The nationalization of enterprises and transfers of ownership in enterprises from the public to the private sector.
+Statutes shall determine the fundamental principles of:
+
+The general organization of national defence;
+The self-government of territorial units, their powers and their resources;
+Education;
+The regime governing ownership, rights in rem, and civil and commercial obligations;
+Labour law, trade-union law and social security.
+Finance Acts shall determine the resources and obligations of the State in the manner and with the reservations specified in an institutional Act.
+Social Security Finance Acts shall determine the general conditions for the financial balance of Social Security and, in light of their revenue forecasts, shall determine expenditure targets in the manner and with the reservations specified in an institutional Act.
+Programme Acts shall determine the objectives of the economic and social action of the State.
+The provisions of this article may be enlarged upon and complemented by an organic law.
+Other areas are matters of regulation. This separation between law and regulation is enforced by the Conseil constitutionnel: the government can, with the agreement of the Conseil constitutionnel, modify by decrees the laws that infringe on the domain of regulations. At the same, the Conseil d'État nullifies decrees that infringe on the domain of the law.
+
+
+=== Order of authority for sources of the law ===
+When courts have to deal with incoherent texts, they apply a certain hierarchy: a text higher in the hierarchy will overrule a lower text. The general rule is that the Constitution is superior to laws which are superior to regulations. However, with the intervention of European law and international treaties, and the quasi-case law of the administrative courts, the hierarchy may become somewhat unclear. The following hierarchy of norms should thus be taken with due caution:
+
+French Constitution, including the basic core constitutional values recognized by the laws of the Republic as defined by the Constitutional Council;
+European Union treaties and regulations;
+International treaties and agreements;
+organic laws;
+ordinary laws;
+executive orders (advised on by the Council of State);
+other executive orders;
+rules and regulations;
+of multiple ministers;
+of a single minister;
+of local authorities;
+regulations and decisions by independent agencies.
+
+
+== Obsolescence of the Constitution ==
+Even more than the failure to comply with the Constitution, it is its obsolescence that is highlighted by Pascal Delwit, a political scientist at the Université libre de Bruxelles (ULB). According to him, in a context of "growing polarization," the institutions of the French Fifth Republic "are outdated" because, when they were adopted in 1958, they were "very well adapted to a given context, to a given personality", The French political model of the 5th Republic dates from 1958, established by Charles de Gaulle, and is perceived as outdated.
+
+
+== Local government ==
+Traditionally, decision-making in France is highly centralized, with each of France's departments headed by a prefect appointed by the central government, in addition to the conseil général, a locally elected council. However, in 1982, the national government passed legislation to decentralize authority by giving a wide range of administrative and fiscal powers to local elected officials. In March 1986, regional councils were directly elected for the first time, and the process of decentralization has continued, albeit at a slow pace. In March 2003, a constitutional revision has changed very significantly the legal framework towards a more decentralized system and has increased the powers of local governments. Albeit France is still one of the most centralized major countries in Europe and the world.
+Administrative units with a local government in Metropolitan France (that is, the parts of France lying in Europe) consist of:
+
+about 35,000 communes, headed by a municipal council and a mayor, grouped in
+96 départements, headed by a conseil général (general council) and its president, grouped in
+18 régions, headed by a regional council and its president.
+The conseil général is an institution created in 1790 by the French Revolution in each of the newly created departments (they were suppressed by the Vichy government from 1942 to 1944). A conseiller général (departmental councillor) must be at least 21 years old and either live or pay taxes in the locality they are elected from. (Sociologist Jean Viard noted [Le Monde, 22 Feb 2006] that half of all conseillers généraux were still fils de paysans, i.e. sons of peasants, suggesting France's deep rural roots). Though the central government can theoretically dissolve a conseil général (in case of a dysfunctional conseil), this has happened only once in the Fifth Republic.
+The conseil général discusses and passes laws on matters that concern the department; it is administratively responsible for departmental employees and land, manages subsidized housing, public transportation, and school subsidies, and contributes to public facilities. It is not allowed to express "political wishes." The conseil général meets at least three times a year and elects its president for a term of 3 years, who presides over its "permanent commission," usually consisting of 5-10 other departmental councillors elected from among their number. The conseil général has accrued new powers in the course of the political decentralization that has occurred past in France during the past thirty years. There are in all more than 4,000 conseillers généraux in France.   
+Different levels of administration have different duties, and shared responsibility is common; for instance, in the field of education, communes run public elementary schools, while départements run public junior high schools and régions run public high schools, but only for the building and upkeep of buildings; curricula and teaching personnel are supplied by the national Ministry of Education.
+The three main cities, Paris, Lyon and Marseille have a special statute. Paris is at the same time a commune and a département with an institution, the Conseil de Paris, that is elected at the same time as the other conseil municipaux, but that operates also as a conseil général. The three cities are also divided into arrondissement each having its conseil d'arrondissement and mayor.
+French overseas possessions are divided into two groups:   
+
+Four overseas regions, with some strong similarity of organization to their metropolitan counterparts; in these overseas regions all laws of France are automatically applicable, except if a specific text provides otherwise or provides some adaptation. The four régions are fully incorporated parts of the territory of the French Republic, and as such belong to the European Union, which means that European law is applicable;
+Territories, generally having greater autonomy. In general, French laws are not applicable, except if a specific text provides otherwise. A new Territory was created in February 2007: Saint-Barthélemy. This Territory used to be part of the overseas department of Guadeloupe. The statute of Saint-Barthélemy provides the automatic application of French law, except mostly in the domain of taxes and immigration, which are left to the Territory. The Territories do not belong to the European Union. However, as "overseas territories" they have association agreements with the EU and may opt into some EU provisions. EU law applies to them only insofar is necessary to implement the association agreements.
+All inhabited French territory is represented in both houses of Parliament and votes for the presidential election.
+
+
+== See also ==
+Anarchism in France
+Conservatism in France
+Corruption in France
+Electoral abstention in France
+Liberalism in France
+List of political scandals in France
+Administrative jurisdiction in France
+
+
+== References ==
+All texts in French unless otherwise noted.
+
+
+== Notes ==
+
+
+== Bibliography ==
+Legal reference texts
+General reference
+General government web site with all texts, including some that are translated to English
+Constitution
+Constitution ed la République Française
+original text
+official English translation
+Declaration of the Rights of Man and of the Citizen (French text, English translation)
+Rules of procedure
+Rules of procedure of the National Assembly (original text, English version)
+Justice
+Code civil (official English translation)
+Code des juridictions financières
+Code de procédure pénale (official English translation)
+Code de justice administrative
+Budget
+The LOLF (official English translation)
+Ombudsman
+Law 73-6 of 3 January 1973, creating the position of the Ombudsman (updated version)
+Justice
+Civil Code, statutory part
+Code of Civil Procedure, statutory part (official English translation)
+Criminal Code, statutory part official English translation)
+Code of Criminal Procedure, statutory part (official English translation)
+Code of Administrative Justice, statutory part
+Official documentation
+General
+Vie publique : découverte des institutions
+Les pouvoirs publics. Textes essentiels 2005., La Documentation française, ISBN 2-11-005961-3
+Financial jurisdictions
+La Cour des Comptes, The Court of Accounts (in English)
+Budget
+Alain Lambert, Didier Migaud, Réussir la LOLF, clé d'une gestion publique responsible et efficace. Rapport au Gouvernement, September 2005, ISBN 2-11-095515-5 (page, PDF)
+Presentation of the LOLF
+Edward Arkwright, Stanislas Godefroy, Manuel Mazquez, Jean-Luc Bœuf, Cécile Courrèges, La mise en oeuvre de la loi organique relative aux lois de finances, La Documentation Française, 2005, ISBN 2-11-005944-3
+Independent administrative authorities
+Conseil d'État, rapport public 2001, Les autorités administratives indépendantes (PDF) ISBN 2-11-004788-7
+
+
+== Further reading ==
+Frédéric Monera, L'idée de République et la jurisprudence du Conseil constitutionnel – Paris: L.G.D.J., 2004 [1]-[2]
+
+
+== External links ==
+Service Public, Official portal to public services (in French)
