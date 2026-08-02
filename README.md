@@ -150,3 +150,16 @@ sudo systemctl stop postgresql
 3. When it works, run in Docker
    docker compose up --build
 ```
+
+## Repository Structure
+
+```text
+political-rag/
+├── assets/                 # Static images and diagrams
+├── data/
+│   ├── all_articles/       # Raw article corpus for RAG indexing
+│   └── eval/               # Evaluation datasets and small reproducible samples
+│       └── samples/        # Small text files used for quick/local eval runs
+├── eval/                   # Evaluation scripts/experiments (e.g., RAGAS checks)
+├── src/                    # Core application logic (ingestion, retrieval, DB, embeddings)
+└── .venv/                  # Local virtual environment (not committed)
