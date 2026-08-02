@@ -58,5 +58,45 @@
   {
     "question": "What are some of the Dutch policies that are the most liberal in the world?",
     "reference_answer": "Dutch policies on recreational drugs, prostitution, same-sex marriage, abortion and euthanasia are among the most liberal in the world."
+  },
+  {
+    "question": "What Type is the system of government of France?",
+    "reference_answer": "France is a semi-presidential system."
+  },
+  {
+    "question": "To be elected as president in France, does a candidate need a nationwide majority of non-blank votes, or do blank votes count too?",
+    "reference_answer": "The blank votes are not counted. A presidential candidate is required to obtain a nationwide majority of non-blank votes"
+  },
+  {
+    "question": "Who serves as the current Prime Minister of France?",
+    "reference_answer": "Sébastien Lecornu is the Prime Minister of France."
+  },
+  {
+    "question": "What are the two houses of the French Parliament?",
+    "reference_answer": "The French Parliament consists of the National Assembly and the Senate"
+  },
+  {
+    "question": "What is the total number of seats for NUPES in the June 2022 legislative election?",
+    "reference_answer": "NUPES won 151 seats in the June 2022 legislative election."
+  },
+  {
+    "question": "What is the primary form of systenm in Finland?",
+    "reference_answer": "Finland has a primarily parliamentary system."
+  },
+  {
+    "question": "who leads the nation's foreign policy and is the supreme commander of the Finnish Defence Forces?",
+    "reference_answer": "The president, Alexander Stubb."
+  },
+  {
+    "question": "During which time and era Finland had an autonomous position within the Russian Empire with its own legislative powers.",
+    "reference_answer": "From 1809 to 1917."
+  },
+  {
+    "question": "When the current version of the constitution of Finland was written",
+    "reference_answer": "1 March 2000."
+  },
+  {
+    "question": "What percentage of imports to Finland are from Russia, and what percentage of exports from Finland are to Russia?",
+    "reference_answer": "11.2% of imports to Finland are from Russia, and 5.7% of exports from Finland are to Russia."
   }
 ]
