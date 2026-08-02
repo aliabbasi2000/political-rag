@@ -155,11 +155,17 @@ sudo systemctl stop postgresql
 
 ```text
 political-rag/
-├── assets/                 # Static images and diagrams
+├── assets/                       # Static images and diagrams
 ├── data/
-│   ├── all_articles/       # Raw article corpus for RAG indexing
-│   └── eval/               # Evaluation datasets and small reproducible samples
-│       └── samples/        # Small text files used for quick/local eval runs
-├── eval/                   # Evaluation scripts/experiments (e.g., RAGAS checks)
-├── src/                    # Core application logic (ingestion, retrieval, DB, embeddings)
-└── .venv/                  # Local virtual environment (not committed)
+│   ├── all_articles/             # Raw article corpus for RAG indexing
+│   └── eval/                     # Evaluation datasets
+│       └── samples/              # Small text files used for local eval runs
+├── eval/                         # Evaluation experiments (e.g., RAGAS checks)
+├── src/
+│   ├── embedding_db.py           # Defines embedding table model
+│   ├── generate_corpus.py        # Downloads and saves raw Wikipedia political articles
+│   ├── populate_vector_db.py     # Splits articles, embeds sentences, inserts into PostgreSQL
+│   ├── prepare_content.py        # Retrieves and formats context blocks for prompt input
+│   └── retrieve_db_content.py    # Runs vector similarity search and context window retrieval
+└── .venv/                 
+```
