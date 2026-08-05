@@ -1,0 +1,6 @@
+FROM qwen3:1.7b
+
+PARAMETER num_ctx 4096
+
+PARAMETER temperature 0
+PARAMETER seed 42

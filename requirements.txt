@@ -7,6 +7,11 @@ faiss-cpu
 nltk==3.8.1
 ragas
 openai
+langchain==0.3.30
+langchain-community==0.3.31 
+langchain-core==0.3.86 
+langchain-openai==0.3.35
+langchain-text-splitters==0.3.11
 
 requests
 python-dotenv
