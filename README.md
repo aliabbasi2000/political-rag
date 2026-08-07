@@ -139,6 +139,21 @@ sudo systemctl stop postgresql
 
 ---
 
+## Evaluation
+
+The generated responses were evaluated for factual consistency using a local LLM as a judge.
+
+* **Generator Model:** `qwen3:0.6b` (Generates answers from the retrieved context)
+* **Judge Model:** `qwen3:1.7b` (Evaluates the generated answers)
+* **Sample Size:** 25 evaluation samples
+
+### Results
+
+| Metric | Score |
+|---|---|
+| **Faithfulness** | 0.76 |
+
+
 ## Development Loop
 
 ```
@@ -169,3 +184,15 @@ political-rag/
 │   └── retrieve_db_content.py    # Runs vector similarity search and context window retrieval
 └── .venv/                 
 ```
+
+---
+
+## Evaluation
+
+- Answer generation model: qwen3:0.6b
+- Judge model (used for evaluation): qwen3:1.7b
+- Faithfulness (average): 0.76
+- Number of evaluated samples: 25
+
+Notes: Evaluation was performed by using the judge model to score the faithfulness of generated answers on a sample set of 25 examples.
+
