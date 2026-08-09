@@ -1,14 +1,18 @@
 # LLM
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.2.2+cpu
+torch --index-url https://download.pytorch.org/whl/cpu
 sentence-transformers
 ollama
 faiss-cpu
-nltk
+nltk==3.8.1
+ragas
+openai
+langchain==0.3.30
 
 requests
 python-dotenv
 wikipedia
+pandas
+
 # DB
 psycopg2-binary
 pgvector

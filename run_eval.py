@@ -1,0 +1,178 @@
+import os
+import json
+import asyncio
+import pandas as pd
+from openai import AsyncOpenAI
+from ragas.llms import llm_factory
+from ragas.metrics.collections import Faithfulness, AnswerRelevancy, ContextPrecision, ContextRecall
+from ragas.embeddings.base import embedding_factory
+from src.prepare_content import search_by_query, format_context
+from src.run_prompt import run_prompt
+
+
+OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
+JUDGE_MODEL = os.environ.get("RAGAS_JUDGE_MODEL", "judge_qwen")
+EMBED_MODEL = os.environ.get("RAGAS_EMBED_MODEL", "nomic-embed-text")
+CHAT_MODEL = os.environ.get("OLLAMA_MODEL", "custom_qwen")
+
+DATASET_PATH = "data/eval/golden_dataset.json"
+GENERATED_ANSWERS_PATH = "data/eval/generated_answers.json"
+EVAL_RESULTS_PATH = "data/eval/eval_results.csv"
+
+
+def load_dataset(path=DATASET_PATH):
+    with open(path) as f:
+        return json.load(f)
+
+
+def save_generated_answers(eval_data, path=GENERATED_ANSWERS_PATH):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(eval_data, f, ensure_ascii=False, indent=2)
+
+
+def load_generated_answers(path=GENERATED_ANSWERS_PATH):
+    if not os.path.exists(path):
+        return None
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+async def run():
+    # PASS 1: Generate All Answers using CHAT_MODEL 
+    dataset = load_dataset()
+    eval_data = load_generated_answers()
+    if eval_data is not None:
+        print(f"=== PASS 1: Reusing saved answers from {GENERATED_ANSWERS_PATH} ===")
+    else:
+        eval_data = []
+        print("=== PASS 1: Generating Answers ===")
+        for i, item in enumerate(dataset, 1):
+            question = item["question"]
+            reference_answer = item["reference_answer"]
+            print(f"[{i}/{len(dataset)}] Question: {question}")
+
+            raw_context = search_by_query(question)
+            retrieved_contexts = format_context(raw_context)
+            context_text = "\n\n".join(retrieved_contexts)
+
+            response = run_prompt(question, context_text, model=CHAT_MODEL)
+            print(f"Generated Response: {response}\n")
+
+            eval_data.append({
+                "question": question,
+                "reference_answer": reference_answer,
+                "response": response,
+                "retrieved_contexts": retrieved_contexts
+            })
+            save_generated_answers(eval_data)
+
+        print(f"Saved generated answers to {GENERATED_ANSWERS_PATH}")
+
+    # PASS 2: Evaluate All Answers using JUDGE_MODEL
+    eval_data = load_generated_answers()
+    if eval_data is None:
+        raise RuntimeError(f"PASS 1 output file not found: {GENERATED_ANSWERS_PATH}")
+
+    print("\n=== PASS 2: Evaluating Generated Answers ===")
+    ollama_client = AsyncOpenAI(base_url=f"{OLLAMA_HOST}/v1", api_key="ollama")
+    
+    judge_llm = llm_factory(
+        JUDGE_MODEL,
+        client=ollama_client,
+        max_tokens=8192,
+        temperature=0.0
+    )
+
+    judge_embeddings = embedding_factory(
+        "openai",
+        model=EMBED_MODEL,
+        client=ollama_client
+    )
+
+    faithfulness = Faithfulness(llm=judge_llm)
+    answer_relevancy = AnswerRelevancy(llm=judge_llm, embeddings=judge_embeddings)
+    context_precision = ContextPrecision(llm=judge_llm)
+    context_recall = ContextRecall(llm=judge_llm)
+
+    rows = []
+    for i, item in enumerate(eval_data, 1):
+        question = item["question"]
+        reference_answer = item["reference_answer"]
+        response = item["response"]
+        retrieved_contexts = item["retrieved_contexts"]
+
+        print(f"\n[{i}/{len(eval_data)}] Question: {question}")
+        
+        faith_score_value = None
+        relevancy_score_value = None
+        precision_score_value = None
+        recall_score_value = None
+
+        # Evaluate Faithfulness
+        try:
+            faith_score = await faithfulness.ascore(
+                user_input=question,
+                response=response,
+                retrieved_contexts=retrieved_contexts
+            )
+            faith_score_value = faith_score.value
+            print(f"Faithfulness score: {faith_score_value}")
+        except Exception as e:
+            print(f"Error calculating score sample[{i}]: {e}")
+
+        # Evaluate Answer Relevancy
+        try:
+            relevancy_score = await answer_relevancy.ascore(
+                user_input=question,
+                response=response
+            )
+            relevancy_score_value = relevancy_score.value
+            print(f"Relevancy score: {relevancy_score_value}")
+        except Exception as e:
+            print(f"Error calculating Relevancy score sample[{i}]: {e}")
+
+        # Evaluate Context Precision
+        try:
+            precision_score = await context_precision.ascore(
+                user_input=question,
+                reference=reference_answer,
+                retrieved_contexts=retrieved_contexts
+            )
+            precision_score_value = precision_score.value
+            print(f"Precision score: {precision_score_value}")
+        except Exception as e:
+            print(f"Error calculating Precision score sample[{i}]: {e}")
+
+        # Evaluate Context Recall
+        try:
+            recall_score = await context_recall.ascore(
+                user_input=question,
+                reference=reference_answer,
+                retrieved_contexts=retrieved_contexts
+            )
+            recall_score_value = recall_score.value
+            print(f"Recall score: {recall_score_value}")
+        except Exception as e:
+            print(f"Error calculating Recall score sample[{i}]: {e}")
+
+        rows.append({
+            "question": question,
+            "reference_answer": reference_answer,
+            "response": response,
+            "faithfulness": faith_score_value,
+            "answer_relevancy": relevancy_score_value,
+            "context_precision": precision_score_value,
+            "context_recall": recall_score_value,
+        })
+
+        df = pd.DataFrame(rows)
+        df.to_csv(EVAL_RESULTS_PATH, index=False)
+
+    print(f"\nSaved Eval results to {EVAL_RESULTS_PATH}")
+    print("\n=== Mean scores ===")
+    print(df[["faithfulness", "answer_relevancy", "context_precision", "context_recall"]].mean())
+
+
+if __name__ == "__main__":
+    asyncio.run(run())

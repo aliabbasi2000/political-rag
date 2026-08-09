@@ -1,7 +1,8 @@
 import os
 from ollama import Client
 
-from src.prepare_content import search_by_query
+from src.prepare_content import search_by_query, format_context
+from src.run_prompt import run_prompt
 
 DEFAULT_QUERY = "Tell me about Politics in Italy."
 try:
@@ -14,22 +15,14 @@ if not query or query.strip() == "":
 
 while True:
   context = search_by_query(query)
+  #print(f"\nRetrieved context:\n{context}\n")
+  prepared_context = format_context(context)
+  #print(f"\nPrepared context:\n{prepared_context}\n")
+  context_text = "\n\n".join(prepared_context)
+  #print(f"\nContext text:\n{context_text}\n")
 
-  prompt = f"<|content_start> {context}<|content_end> {query}"
-  #print(f"\nPrompt:\n{prompt}\n")
-
-
-  host = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
-  client = Client(host=host)
-
-  response = client.chat(model='custom_qwen', messages=[
-    {
-      'role': 'user',
-      'content': prompt,
-    },
-  ])
-
-  print(f"\n{response.message.content}\n")
+  response = run_prompt(query, context_text, model='custom_qwen')
+  print(f"\n{response}\n")
 
   try:
     new_query = input("\n Chat (or 'q' to quit): ")

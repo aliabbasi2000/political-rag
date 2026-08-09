@@ -25,6 +25,15 @@ def _is_unique_match(existing_matches, current_match, group_window_size=5):
 
 
 def get_filtered_matches(search_results, group_window_size=5):
+    """Keep only a small set of non-overlapping matches.
+
+    Args:
+        search_results: Search results to filter.
+        group_window_size: Window size used to avoid nearby duplicates.
+
+    Returns:
+        A list of up to five unique matches.
+    """
     unique_count = 0
     matches = []
     for result in search_results:
@@ -37,6 +46,16 @@ def get_filtered_matches(search_results, group_window_size=5):
 
 
 def search_by_query(query, num_matches=5, group_window_size=5):
+    """Search the database for relevant context around a user query.
+
+    Args:
+        query: The user query to embed and search for.
+        num_matches: Number of candidate matches to collect before filtering.
+        group_window_size: Window size used to merge nearby matches.
+
+    Returns:
+        Surrounding sentences for the selected matches as context blocks.
+    """
     session = get_psql_session()
     host = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
     client = Client(host=host)
@@ -53,10 +72,42 @@ def search_by_query(query, num_matches=5, group_window_size=5):
 
     return get_surrounding_sentences(entry_ids, file_names, session, group_window_size=group_window_size)
 
+
+def format_context(raw_context):
+    """Format grouped context rows into text blocks.
+
+    Args:
+        raw_context: A list of context groups, where each group contains sentence rows.
+
+    Returns:
+        A list of formatted text blocks ready to use in a prompt.
+    """
+    formatted = []
+    for group in raw_context:
+        if not group:
+            continue
+
+        file_name = group[0].file_name
+        start_sentence = group[0].sentence_number
+        end_sentence = group[-1].sentence_number
+
+        text = ""
+        for row in group:
+            text += row.content + " "
+        text = text.strip()
+
+        formatted.append(
+            f"[Source: {file_name} | sentences {start_sentence}-{end_sentence}]\n{text}"
+        )
+
+    return formatted
+
+
 if __name__ == "__main__":
 
     query = "Tell me about children's rights in Iran."
     print(f"\n TEST: Searching for query: {query}")
     context = search_by_query(query)
-    for i in context:
+    formatted_context = format_context(context)
+    for i in formatted_context:
         print(i, "\n")

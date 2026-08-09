@@ -6,7 +6,13 @@ import wikipedia
 wikipedia.set_user_agent("MyCorpusGenerator/1.0 (test@example.com)")
 
 def generate_corpus(search_term="politics", num_articles=1000, output_dir="data/all_articles"):
-    # Generate a corpus of Wikipedia articles and save them as text files.
+    """Generate a corpus by downloading Wikipedia articles and saving them as text files.
+
+    Args:
+        search_term: Subject used to search articles.
+        num_articles: Maximum number of search results to process.
+        output_dir: Directory where article text files are written.
+    """
 
     # Create output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)

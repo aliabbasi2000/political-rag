@@ -17,6 +17,17 @@ embeddings = client.embed(model="nomic-embed-text", input=sentences)["embeddings
 #print(embeddings[0])
 
 def group_entries(entry_ids, file_names, index_of_interest, group_window_size):
+    """Find nearby entries from the same file around a chosen index.
+
+    Args:
+        entry_ids: List of entry IDs returned from the database.
+        file_names: File names corresponding to the entry IDs.
+        index_of_interest: Index of the matched entry to group around.
+        group_window_size: Group window size.
+
+    Returns:
+        A list of indexes that belong to the same group around the chosen entry.
+    """
     entry_id_of_interest = entry_ids[index_of_interest]
     file_name_of_interest = file_names[index_of_interest]
 
@@ -34,6 +45,14 @@ def group_entries(entry_ids, file_names, index_of_interest, group_window_size):
 
 
 def consolidate_groupings(grouped_entries):
+    """Combine overlapping groups into one larger group.
+
+    Args:
+        grouped_entries: List of groups that may overlap.
+
+    Returns:
+        A new list of combined groups.
+    """
     original_groups = [list(group) for group in grouped_entries]
     combined_groups = []
 
@@ -57,6 +76,17 @@ def consolidate_groupings(grouped_entries):
 
 
 def get_min_max_ids(entry_ids, file_names, combined_groups, group_window_size):
+    """Calculate the ID range for each combined group.
+
+    Args:
+        entry_ids: Entry IDs returned from the database.
+        file_names: File names corresponding to the entry IDs.
+        combined_groups: Merged groups of entry indexes.
+        group_window_size: Group window size.
+
+    Returns:
+        Two lists with the minimum and maximum ID for each group.
+    """
     min_ids = []
     max_ids = []
 
@@ -73,6 +103,16 @@ def get_min_max_ids(entry_ids, file_names, combined_groups, group_window_size):
 
 # Find the most similar sentence in the database to our query using cosine distance
 def search_embeddings(query_embedding, session, limit=5):
+    """Search for the closest matching sentences in the database.
+
+    Args:
+        query_embedding: Vector representation of the query.
+        session: Database session used to execute the query.
+        limit: Maximum number of rows to return.
+
+    Returns:
+        The most similar rows from the embedding table.
+    """
     
     # <=> operator for computing cosine distance between the query and the embeddings stored in the database
     # <=> expects both operands to be of type vector. So the query_embedding which is a python vector needs to be cast to vector type using CAST()
@@ -89,6 +129,18 @@ def search_embeddings(query_embedding, session, limit=5):
 
 
 def get_surrounding_sentences(entry_ids, file_names, session, group_window_size=3):
+    """Fetch nearby sentences around each matched result.
+
+    Args:
+        entry_ids: Entry IDs returned from the similarity search.
+        file_names: File names corresponding to the entry IDs.
+        session: Database session used to execute the query.
+        group_window_size: Group window size used to collect neighboring sentences.
+
+    Returns:
+        A list of sentence groups for each matched result.
+    """
+
     if not entry_ids:
         return []
 
@@ -107,6 +159,7 @@ def get_surrounding_sentences(entry_ids, file_names, session, group_window_size=
             FROM text_embeddings
             WHERE file_name = :file_name
               AND id >= :min_id AND id <= :max_id
+            ORDER BY sentence_number
         """)
 
         result = session.execute(sql_query, {

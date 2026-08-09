@@ -53,6 +53,8 @@ python -m venv .venv
 source .venv/bin/activate
 
 pip install -r requirements.txt
+
+python -c "import nltk; nltk.download('punkt')"
 ```
 
 ### Environment Variables
@@ -137,6 +139,24 @@ sudo systemctl stop postgresql
 
 ---
 
+## Evaluation
+
+The generated responses were evaluated for factual consistency using a local LLM as a judge.
+
+* **Generator Model:** `qwen3:0.6b` (Generates answers from the retrieved context)
+* **Judge Model:** `qwen3:1.7b` (Evaluates the generated answers)
+* **Sample Size:** 25 evaluation samples
+
+### Results
+
+| Metric | Score |
+|---|---|
+| **Faithfulness** | 0.63 |
+| **Answer Relevancy** | 0.14 |
+| **Context Precision** | 0.95 |
+| **Context Recall** | 1.0 |
+
+
 ## Development Loop
 
 ```
@@ -147,4 +167,44 @@ sudo systemctl stop postgresql
          ↓
 3. When it works, run in Docker
    docker compose up --build
+```
+
+## Repository Structure
+
+```text
+political-rag/
+├── assets/                       # Static images and diagrams
+├── data/
+│   ├── all_articles/             # Raw article corpus for RAG indexing
+│   └── eval/                     # Evaluation datasets
+│       └── samples/              # Small text files used for local eval runs
+├── eval/                         # Evaluation experiments (e.g., RAGAS checks)
+├── src/
+│   ├── embedding_db.py           # Defines embedding table model
+│   ├── generate_corpus.py        # Downloads and saves raw Wikipedia political articles
+│   ├── populate_vector_db.py     # Splits articles, embeds sentences, inserts into PostgreSQL
+│   ├── prepare_content.py        # Retrieves and formats context blocks for prompt input
+│   └── retrieve_db_content.py    # Runs vector similarity search and context window retrieval
+└── .venv/                 
+```
+
+## Repository History
+
+```mermaid
+gitGraph
+   commit id: "init-chat-loop"
+   commit id: "wikipedia-corpus-gen"
+   commit id: "postgres-pgvector-storage"
+   commit id: "vector-search-retrieval"
+   commit id: "local-llm-inference-qwen"
+   commit id: "dockerize"
+   commit id: "release-polish" tag: "v1.0.0"
+   branch feature/eval
+   checkout feature/eval
+   commit id: "ragas-eval"
+   commit id: "golden-dataset"
+   commit id: "expand-dataset-refactor-gen"
+   commit id: "two-phase-eval-pipeline"
+   checkout main
+   merge feature/eval id: "PR-eval-merge" tag: "current"
 ```
