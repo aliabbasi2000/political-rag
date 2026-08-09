@@ -100,9 +100,7 @@ def format_context(raw_context):
             f"[Source: {file_name} | sentences {start_sentence}-{end_sentence}]\n{text}"
         )
 
-    prepared_context = "\n\n".join(formatted)
-
-    return prepared_context
+    return formatted
 
 
 if __name__ == "__main__":

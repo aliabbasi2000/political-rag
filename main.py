@@ -18,8 +18,10 @@ while True:
   #print(f"\nRetrieved context:\n{context}\n")
   prepared_context = format_context(context)
   #print(f"\nPrepared context:\n{prepared_context}\n")
+  context_text = "\n\n".join(prepared_context)
+  #print(f"\nContext text:\n{context_text}\n")
 
-  response = run_prompt(query, prepared_context, model='custom_qwen')
+  response = run_prompt(query, context_text, model='custom_qwen')
   print(f"\n{response}\n")
 
   try:
