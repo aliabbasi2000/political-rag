@@ -188,14 +188,23 @@ political-rag/
 └── .venv/                 
 ```
 
----
+## Repository History
 
-## Evaluation
-
-- Answer generation model: qwen3:0.6b
-- Judge model (used for evaluation): qwen3:1.7b
-- Faithfulness (average): 0.76
-- Number of evaluated samples: 25
-
-Notes: Evaluation was performed by using the judge model to score the faithfulness of generated answers on a sample set of 25 examples.
-
+```mermaid
+gitGraph
+   commit id: "init-chat-loop"
+   commit id: "wikipedia-corpus-gen"
+   commit id: "postgres-pgvector-storage"
+   commit id: "vector-search-retrieval"
+   commit id: "local-llm-inference-qwen"
+   commit id: "dockerize"
+   commit id: "release-polish" tag: "v1.0.0"
+   branch feature/eval
+   checkout feature/eval
+   commit id: "ragas-eval"
+   commit id: "golden-dataset"
+   commit id: "expand-dataset-refactor-gen"
+   commit id: "two-phase-eval-pipeline"
+   checkout main
+   merge feature/eval id: "PR-eval-merge" tag: "current"
+```
