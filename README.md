@@ -151,7 +151,10 @@ The generated responses were evaluated for factual consistency using a local LLM
 
 | Metric | Score |
 |---|---|
-| **Faithfulness** | 0.76 |
+| **Faithfulness** | 0.63 |
+| **Answer Relevancy** | 0.14 |
+| **Context Precision** | 0.95 |
+| **Context Recall** | 1.0 |
 
 
 ## Development Loop
