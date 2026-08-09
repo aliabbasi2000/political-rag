@@ -1,10 +1,10 @@
+import os
+import json
 import asyncio
 import pandas as pd
 from openai import AsyncOpenAI
 from ragas.llms import llm_factory
-from ragas.metrics.collections import Faithfulness
-import json
-import os
+from ragas.metrics.collections import Faithfulness, AnswerRelevancy, ContextPrecision, ContextRecall
 from ragas.embeddings.base import embedding_factory
 from src.prepare_content import search_by_query, format_context
 from src.run_prompt import run_prompt
@@ -49,6 +49,7 @@ async def run():
         print("=== PASS 1: Generating Answers ===")
         for i, item in enumerate(dataset, 1):
             question = item["question"]
+            reference_answer = item["reference_answer"]
             print(f"[{i}/{len(dataset)}] Question: {question}")
 
             raw_context = search_by_query(question)
@@ -60,6 +61,7 @@ async def run():
 
             eval_data.append({
                 "question": question,
+                "reference_answer": reference_answer,
                 "response": response,
                 "retrieved_contexts": retrieved_contexts
             })
@@ -78,20 +80,36 @@ async def run():
     judge_llm = llm_factory(
         JUDGE_MODEL,
         client=ollama_client,
-        max_tokens=4096,
+        max_tokens=8192,
         temperature=0.0
     )
+
+    judge_embeddings = embedding_factory(
+        "openai",
+        model=EMBED_MODEL,
+        client=ollama_client
+    )
+
     faithfulness = Faithfulness(llm=judge_llm)
+    answer_relevancy = AnswerRelevancy(llm=judge_llm, embeddings=judge_embeddings)
+    context_precision = ContextPrecision(llm=judge_llm)
+    context_recall = ContextRecall(llm=judge_llm)
 
     rows = []
     for i, item in enumerate(eval_data, 1):
         question = item["question"]
+        reference_answer = item["reference_answer"]
         response = item["response"]
         retrieved_contexts = item["retrieved_contexts"]
 
-        print(f"[{i}/{len(eval_data)}] Question: {question}")
+        print(f"\n[{i}/{len(eval_data)}] Question: {question}")
         
         faith_score_value = None
+        relevancy_score_value = None
+        precision_score_value = None
+        recall_score_value = None
+
+        # Evaluate Faithfulness
         try:
             faith_score = await faithfulness.ascore(
                 user_input=question,
@@ -99,14 +117,53 @@ async def run():
                 retrieved_contexts=retrieved_contexts
             )
             faith_score_value = faith_score.value
-            print(f"Faithfulness score: {faith_score_value}\n")
+            print(f"Faithfulness score: {faith_score_value}")
         except Exception as e:
-            print(f"Error calculating score sample[{i}]: {e}\n")
+            print(f"Error calculating score sample[{i}]: {e}")
+
+        # Evaluate Answer Relevancy
+        try:
+            relevancy_score = await answer_relevancy.ascore(
+                user_input=question,
+                response=response
+            )
+            relevancy_score_value = relevancy_score.value
+            print(f"Relevancy score: {relevancy_score_value}")
+        except Exception as e:
+            print(f"Error calculating Relevancy score sample[{i}]: {e}")
+
+        # Evaluate Context Precision
+        try:
+            precision_score = await context_precision.ascore(
+                user_input=question,
+                reference=reference_answer,
+                retrieved_contexts=retrieved_contexts
+            )
+            precision_score_value = precision_score.value
+            print(f"Precision score: {precision_score_value}")
+        except Exception as e:
+            print(f"Error calculating Precision score sample[{i}]: {e}")
+
+        # Evaluate Context Recall
+        try:
+            recall_score = await context_recall.ascore(
+                user_input=question,
+                reference=reference_answer,
+                retrieved_contexts=retrieved_contexts
+            )
+            recall_score_value = recall_score.value
+            print(f"Recall score: {recall_score_value}")
+        except Exception as e:
+            print(f"Error calculating Recall score sample[{i}]: {e}")
 
         rows.append({
             "question": question,
+            "reference_answer": reference_answer,
             "response": response,
-            "faithfulness": faith_score_value
+            "faithfulness": faith_score_value,
+            "answer_relevancy": relevancy_score_value,
+            "context_precision": precision_score_value,
+            "context_recall": recall_score_value,
         })
 
         df = pd.DataFrame(rows)
@@ -114,7 +171,7 @@ async def run():
 
     print(f"\nSaved Eval results to {EVAL_RESULTS_PATH}")
     print("\n=== Mean scores ===")
-    print(df[["faithfulness"]].mean())
+    print(df[["faithfulness", "answer_relevancy", "context_precision", "context_recall"]].mean())
 
 
 if __name__ == "__main__":
