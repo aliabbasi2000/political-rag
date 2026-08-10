@@ -104,66 +104,51 @@ async def run():
 
         print(f"\n[{i}/{len(eval_data)}] Question: {question}")
         
-        faith_score_value = None
-        relevancy_score_value = None
-        precision_score_value = None
-        recall_score_value = None
+        metrics = {
+            "faithfulness": None,
+            "answer_relevancy": None,
+            "context_precision": None,
+            "context_recall": None
+        }
 
-        # Evaluate Faithfulness
-        try:
-            faith_score = await faithfulness.ascore(
-                user_input=question,
-                response=response,
-                retrieved_contexts=retrieved_contexts
-            )
-            faith_score_value = faith_score.value
-            print(f"Faithfulness score: {faith_score_value}")
-        except Exception as e:
-            print(f"Error calculating score sample[{i}]: {e}")
-
-        # Evaluate Answer Relevancy
-        try:
-            relevancy_score = await answer_relevancy.ascore(
-                user_input=question,
-                response=response
-            )
-            relevancy_score_value = relevancy_score.value
-            print(f"Relevancy score: {relevancy_score_value}")
-        except Exception as e:
-            print(f"Error calculating Relevancy score sample[{i}]: {e}")
-
-        # Evaluate Context Precision
-        try:
-            precision_score = await context_precision.ascore(
-                user_input=question,
-                reference=reference_answer,
-                retrieved_contexts=retrieved_contexts
-            )
-            precision_score_value = precision_score.value
-            print(f"Precision score: {precision_score_value}")
-        except Exception as e:
-            print(f"Error calculating Precision score sample[{i}]: {e}")
-
-        # Evaluate Context Recall
-        try:
-            recall_score = await context_recall.ascore(
-                user_input=question,
-                reference=reference_answer,
-                retrieved_contexts=retrieved_contexts
-            )
-            recall_score_value = recall_score.value
-            print(f"Recall score: {recall_score_value}")
-        except Exception as e:
-            print(f"Error calculating Recall score sample[{i}]: {e}")
+        for metric_name in metrics.keys():
+            try:
+                if metric_name == "faithfulness":
+                    score = await faithfulness.ascore(
+                        user_input=question,
+                        response=response,
+                        retrieved_contexts=retrieved_contexts
+                    )
+                elif metric_name == "answer_relevancy":
+                    score = await answer_relevancy.ascore(
+                        user_input=question,
+                        response=response
+                    )
+                elif metric_name == "context_precision":
+                    score = await context_precision.ascore(
+                        user_input=question,
+                        reference=reference_answer,
+                        retrieved_contexts=retrieved_contexts
+                    )
+                elif metric_name == "context_recall":
+                    score = await context_recall.ascore(
+                        user_input=question,
+                        reference=reference_answer,
+                        retrieved_contexts=retrieved_contexts
+                    )
+                metrics[metric_name] = score.value
+                print(f"{metric_name} score: {score.value}")
+            except Exception as e:
+                print(f"Error calculating {metric_name} score sample[{i}]: {e}")
 
         rows.append({
             "question": question,
             "reference_answer": reference_answer,
             "response": response,
-            "faithfulness": faith_score_value,
-            "answer_relevancy": relevancy_score_value,
-            "context_precision": precision_score_value,
-            "context_recall": recall_score_value,
+            "faithfulness": metrics["faithfulness"],
+            "answer_relevancy": metrics["answer_relevancy"],
+            "context_precision": metrics["context_precision"],
+            "context_recall": metrics["context_recall"],
         })
 
         df = pd.DataFrame(rows)
