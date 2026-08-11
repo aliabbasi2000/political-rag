@@ -1,6 +1,6 @@
 # Political RAG
 
-A Retrieval-Augmented Generation (RAG) system built from scratch, without frameworks like LangChain, focusing on politics. 
+A Retrieval-Augmented Generation (RAG) system built from scratch, focusing on politics. 
 
 This system generates a corpus from Wikipedia articles on political topics, stores sentence embeddings in PostgreSQL with pgvector, and uses prompt engineering to answer questions using a local LLM running on your machine with no external API calls. Containerized with Docker for a portable deployment.
 
@@ -65,8 +65,6 @@ Before running the project, copy the example environment file and update it with
 cp .env.example .env
 ```
 
----
-
 ## Running the Project
 
 ### Option 1 — Run locally
@@ -93,7 +91,41 @@ After the first run, start local RAG without initial setups
 docker compose run --rm rag python main.py
 ```
 
----
+## Architecture Evaluation
+
+The generated responses were evaluated using a local LLM as a judge over 25 samples.
+
+### Evaluation 1
+
+* **Generator Model:** `qwen3:0.6b` (Generates answers from the retrieved context)
+* **Judge Model:** `qwen3:1.7b` (Evaluates the generated answers)
+
+### Results
+
+| Metric | Score |
+|---|---|
+| **Faithfulness** | 0.63 |
+| **Answer Relevancy** | 0.14 |
+| **Context Precision** | 0.95 |
+| **Context Recall** | 1.0 |
+
+> Note: These results indicate a well-performing retrieval phase (high Context Precision and Recall) but an underperforming generation phase (low Faithfulness and Answer Relevancy). To address this, the evaluation was repeated using larger models for both the generator and the judge. The updated results are below:
+
+### Evaluation 2 
+
+* **Generator Model:** `qwen3:1.7b` (Generates answers from the retrieved context)
+* **Judge Model:** `qwen3:4b` (Evaluates the generated answers)
+
+### Results
+
+| Metric | Score |
+|---|---|
+| **Faithfulness** | 0.98 |
+| **Answer Relevancy** | 0.91 |
+| **Context Precision** | 0.98 |
+| **Context Recall** | 1.0 |
+
+> Note: Using a larger model improved the performance of generation phase.
 
 ## Databases
  
@@ -118,7 +150,7 @@ psql -h localhost -U postgres -d text_embeddings
 docker compose stop db
 ```
  
-> ⚠️ If Docker PostgreSQL fails to start with "port already in use", the local PostgreSQL is running. Stop it first: `sudo systemctl stop postgresql`
+> Note: If Docker PostgreSQL fails to start with "port already in use", the local PostgreSQL is running. Stop it first: `sudo systemctl stop postgresql`
  
 ### Option B — Local WSL PostgreSQL
  
@@ -135,26 +167,7 @@ psql -U postgres -d text_embeddings
 sudo systemctl stop postgresql
 ```
  
-> ⚠️ If PostgreSQL fails to start with "port already in use", the Docker PostgreSQL is running. Stop it first with: `docker compose stop db`
-
----
-
-## Evaluation
-
-The generated responses were evaluated for factual consistency using a local LLM as a judge.
-
-* **Generator Model:** `qwen3:0.6b` (Generates answers from the retrieved context)
-* **Judge Model:** `qwen3:1.7b` (Evaluates the generated answers)
-* **Sample Size:** 25 evaluation samples
-
-### Results
-
-| Metric | Score |
-|---|---|
-| **Faithfulness** | 0.63 |
-| **Answer Relevancy** | 0.14 |
-| **Context Precision** | 0.95 |
-| **Context Recall** | 1.0 |
+> Note: If PostgreSQL fails to start with "port already in use", the Docker PostgreSQL is running. Stop it first with: `docker compose stop db`
 
 
 ## Development Loop
@@ -184,8 +197,19 @@ political-rag/
 │   ├── generate_corpus.py        # Downloads and saves raw Wikipedia political articles
 │   ├── populate_vector_db.py     # Splits articles, embeds sentences, inserts into PostgreSQL
 │   ├── prepare_content.py        # Retrieves and formats context blocks for prompt input
-│   └── retrieve_db_content.py    # Runs vector similarity search and context window retrieval
-└── .venv/                 
+│   ├── retrieve_db_content.py    # Runs vector similarity search and context window retrieval
+│   └── run_prompt.py             # Sends prompts to the local LLM
+├── .env.example                  # Example environment variables
+├── .env                          # Local environment config (not committed)
+├── Dockerfile                    # Container definition for the app
+├── docker-compose.yml            # Service orchestration for app + database
+├── init.sql                      # PostgreSQL initialization script
+├── main.py                       # Main chat entry point
+├── ModelFile                     # Ollama model definition for the generator
+├── Modelfile.judge               # Ollama model definition for the judge
+├── requirements.txt              # Python dependencies
+├── run_eval.py                   # Evaluation script
+└── .venv/                        # Local Python virtual environment
 ```
 
 ## Repository History
