@@ -15,9 +15,9 @@ JUDGE_MODEL = os.environ.get("RAGAS_JUDGE_MODEL", "judge_qwen")
 EMBED_MODEL = os.environ.get("RAGAS_EMBED_MODEL", "nomic-embed-text")
 CHAT_MODEL = os.environ.get("OLLAMA_MODEL", "custom_qwen")
 
-DATASET_PATH = "data/eval/golden_dataset.json"
-GENERATED_ANSWERS_PATH = "data/eval/generated_answers.json"
-EVAL_RESULTS_PATH = "data/eval/eval_results.csv"
+DATASET_PATH = "eval/golden_dataset.json"
+GENERATED_ANSWERS_PATH = "eval/generated_answers.json"
+EVAL_RESULTS_PATH = "eval/eval_results.csv"
 
 
 def load_dataset(path=DATASET_PATH):
