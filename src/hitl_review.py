@@ -1,3 +1,4 @@
+import datetime
 import os
 from dotenv import load_dotenv
 
@@ -23,9 +24,26 @@ def flag_for_feedback(ragas_scores, threshold=0.7):
     return False
 
 def collect_human_feedback(question, response, reference_answer, ragas_scores):
-    return print("=== Human Feedback Needed ===")
+    print("=== Human Feedback Needed ===")
+    print(f"Question: {question}\nResponse: {response}\nReference Answer: {reference_answer}\nRAGAS Scores: {ragas_scores}")
+    feedback = input("Feedback (Approve/Reject/Skip): ").strip().lower()
 
-
+    if feedback == "skip" or feedback not in ["approve", "reject"]:
+        print("Feedback skipped.")
+        return None
+    comment = input("Comment (optional): ").strip()
+    feedback_data = {
+        "question": question,
+        "response": response,
+        "reference_answer": reference_answer,
+        "ragas_scores": ragas_scores,
+        "human_reviewer": os.getenv("HITL_REVIEWER_NAME", "unknown"),
+        "human_feedback": feedback,
+        "human_comment": comment,
+        "review_timestamp": datetime.datetime.now().isoformat()
+    }
+    return feedback_data
+    
 if __name__ == "__main__":
     # Example usage
     ragas_scores = {
@@ -36,4 +54,4 @@ if __name__ == "__main__":
     }
     
     if is_hitl_enabled() and flag_for_feedback(ragas_scores):
-        collect_human_feedback("What is the capital of France?", "The capital of France is Berlin.", "The capital of France is Paris.", ragas_scores)
+        print(collect_human_feedback("What is the capital of France?", "The capital of France is Berlin.", "The capital of France is Paris.", ragas_scores))
