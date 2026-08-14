@@ -5,3 +5,4 @@ __pycache__/
 data/all_articles/
 *.index
 models/
+test_hitl.py

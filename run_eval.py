@@ -103,93 +103,95 @@ async def run():
         print(f"Saved generated answers to {GENERATED_ANSWERS_PATH}")
 
     # PASS 2: Evaluate All Answers using JUDGE_MODEL
-    eval_data = load_generated_answers()
-    if eval_data is None:
-        raise RuntimeError(f"PASS 1 output file not found: {GENERATED_ANSWERS_PATH}")
+    eval_result = load_eval_result()
+    if eval_result is None:
+        eval_data = load_generated_answers()
+        if eval_data is None:
+            raise RuntimeError(f"PASS 1 output file not found: {GENERATED_ANSWERS_PATH}")
 
-    print("\n=== PASS 2: Evaluating Generated Answers ===")
-    ollama_client = AsyncOpenAI(base_url=f"{OLLAMA_HOST}/v1", api_key="ollama")
-    
-    judge_llm = llm_factory(
-        JUDGE_MODEL,
-        client=ollama_client,
-        max_tokens=8192,
-        temperature=0.0
-    )
-
-    judge_embeddings = embedding_factory(
-        "openai",
-        model=EMBED_MODEL,
-        client=ollama_client
-    )
-
-    faithfulness = Faithfulness(llm=judge_llm)
-    answer_relevancy = AnswerRelevancy(llm=judge_llm, embeddings=judge_embeddings)
-    context_precision = ContextPrecision(llm=judge_llm)
-    context_recall = ContextRecall(llm=judge_llm)
-
-    rows = []
-    for i, item in enumerate(eval_data, 1):
-        question = item["question"]
-        reference_answer = item["reference_answer"]
-        response = item["response"]
-        retrieved_contexts = item["retrieved_contexts"]
-
-        print(f"\n[{i}/{len(eval_data)}] Question: {question}")
+        print("\n=== PASS 2: Evaluating Generated Answers ===")
+        ollama_client = AsyncOpenAI(base_url=f"{OLLAMA_HOST}/v1", api_key="ollama")
         
-        metrics = {
-            "faithfulness": None,
-            "answer_relevancy": None,
-            "context_precision": None,
-            "context_recall": None
-        }
+        judge_llm = llm_factory(
+            JUDGE_MODEL,
+            client=ollama_client,
+            max_tokens=8192,
+            temperature=0.0
+        )
 
-        for metric_name in metrics.keys():
-            try:
-                if metric_name == "faithfulness":
-                    score = await faithfulness.ascore(
-                        user_input=question,
-                        response=response,
-                        retrieved_contexts=retrieved_contexts
-                    )
-                elif metric_name == "answer_relevancy":
-                    score = await answer_relevancy.ascore(
-                        user_input=question,
-                        response=response
-                    )
-                elif metric_name == "context_precision":
-                    score = await context_precision.ascore(
-                        user_input=question,
-                        reference=reference_answer,
-                        retrieved_contexts=retrieved_contexts
-                    )
-                elif metric_name == "context_recall":
-                    score = await context_recall.ascore(
-                        user_input=question,
-                        reference=reference_answer,
-                        retrieved_contexts=retrieved_contexts
-                    )
-                metrics[metric_name] = score.value
-                print(f"{metric_name} score: {score.value}")
-            except Exception as e:
-                print(f"Error calculating {metric_name} score sample[{i}]: {e}")
+        judge_embeddings = embedding_factory(
+            "openai",
+            model=EMBED_MODEL,
+            client=ollama_client
+        )
 
-        rows.append({
-            "question": question,
-            "reference_answer": reference_answer,
-            "response": response,
-            "faithfulness": metrics["faithfulness"],
-            "answer_relevancy": metrics["answer_relevancy"],
-            "context_precision": metrics["context_precision"],
-            "context_recall": metrics["context_recall"],
-        })
+        faithfulness = Faithfulness(llm=judge_llm)
+        answer_relevancy = AnswerRelevancy(llm=judge_llm, embeddings=judge_embeddings)
+        context_precision = ContextPrecision(llm=judge_llm)
+        context_recall = ContextRecall(llm=judge_llm)
 
-        df = pd.DataFrame(rows)
-        df.to_csv(EVAL_RESULTS_PATH, index=False)
+        eval_result = []
+        for i, item in enumerate(eval_data, 1):
+            question = item["question"]
+            reference_answer = item["reference_answer"]
+            response = item["response"]
+            retrieved_contexts = item["retrieved_contexts"]
 
-    print(f"\nSaved Eval results to {EVAL_RESULTS_PATH}")
-    print("\n=== Mean scores ===")
-    print(df[["faithfulness", "answer_relevancy", "context_precision", "context_recall"]].mean())
+            print(f"\n[{i}/{len(eval_data)}] Question: {question}")
+            
+            metrics = {
+                "faithfulness": None,
+                "answer_relevancy": None,
+                "context_precision": None,
+                "context_recall": None
+            }
+
+            for metric_name in metrics.keys():
+                try:
+                    if metric_name == "faithfulness":
+                        score = await faithfulness.ascore(
+                            user_input=question,
+                            response=response,
+                            retrieved_contexts=retrieved_contexts
+                        )
+                    elif metric_name == "answer_relevancy":
+                        score = await answer_relevancy.ascore(
+                            user_input=question,
+                            response=response
+                        )
+                    elif metric_name == "context_precision":
+                        score = await context_precision.ascore(
+                            user_input=question,
+                            reference=reference_answer,
+                            retrieved_contexts=retrieved_contexts
+                        )
+                    elif metric_name == "context_recall":
+                        score = await context_recall.ascore(
+                            user_input=question,
+                            reference=reference_answer,
+                            retrieved_contexts=retrieved_contexts
+                        )
+                    metrics[metric_name] = score.value
+                    print(f"{metric_name} score: {score.value}")
+                except Exception as e:
+                    print(f"Error calculating {metric_name} score sample[{i}]: {e}")
+
+            eval_result.append({
+                "question": question,
+                "reference_answer": reference_answer,
+                "response": response,
+                "faithfulness": metrics["faithfulness"],
+                "answer_relevancy": metrics["answer_relevancy"],
+                "context_precision": metrics["context_precision"],
+                "context_recall": metrics["context_recall"],
+            })
+
+            df = pd.DataFrame(eval_result)
+            df.to_csv(EVAL_RESULTS_PATH, index=False)
+
+        print(f"\nSaved Eval results to {EVAL_RESULTS_PATH}")
+        print("\n=== Mean scores ===")
+        print(df[["faithfulness", "answer_relevancy", "context_precision", "context_recall"]].mean())
 
     # PASS 3: Huamn In The Loop
     print("\n=== PASS 2: Human In The Loop ===")
