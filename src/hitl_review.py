@@ -16,15 +16,17 @@ def flag_for_feedback(ragas_scores, threshold=0.7):
         threshold (float): The threshold below which feedback is needed.
 
     Returns:
-        bool: True if feedback is needed, False otherwise.
+        Dict or bool: Returns a Dict of scores that are below the threshold if any, otherwise returns False.
     """
-    for score in ragas_scores.values():
+    flagged = {}
+    for metric, score in ragas_scores.items():
         if score < threshold:
-            return True
-    return False
+            flagged[metric] = score
 
-def collect_human_feedback(question, response, reference_answer, ragas_scores):
-    print("=== Human Feedback Needed ===")
+    return False if not flagged else flagged
+
+def collect_human_feedback(question, response, reference_answer, ragas_scores, hitl_flag_reasons):
+    print(f"=== Human Feedback Needed: {hitl_flag_reasons} ===")
     print(f"Question: {question}\nResponse: {response}\nReference Answer: {reference_answer}\nRAGAS Scores: {ragas_scores}")
     feedback = input("Feedback (Approve/Reject/Skip): ").strip().lower()
 
@@ -37,21 +39,10 @@ def collect_human_feedback(question, response, reference_answer, ragas_scores):
         "response": response,
         "reference_answer": reference_answer,
         "ragas_scores": ragas_scores,
+        "flag_reason": hitl_flag_reasons,
         "human_reviewer": os.getenv("HITL_REVIEWER_NAME", "unknown"),
         "human_feedback": feedback,
         "human_comment": comment,
         "review_timestamp": datetime.datetime.now().isoformat()
     }
     return feedback_data
-    
-if __name__ == "__main__":
-    # Example usage
-    ragas_scores = {
-        "faithfulness": 0.6,
-        "answer_relevancy": 0.8,
-        "context_precision": 0.9,
-        "context_recall": 1
-    }
-    
-    if is_hitl_enabled() and flag_for_feedback(ragas_scores):
-        print(collect_human_feedback("What is the capital of France?", "The capital of France is Berlin.", "The capital of France is Paris.", ragas_scores))
