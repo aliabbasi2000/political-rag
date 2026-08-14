@@ -19,8 +19,9 @@ CHAT_MODEL = os.environ.get("OLLAMA_MODEL", "custom_qwen")
 HITL_FLAG_THRESHOLD = float(os.environ.get("HITL_FLAG_THRESHOLD", 0.7))
 
 DATASET_PATH = "eval/golden_dataset.json"
-GENERATED_ANSWERS_PATH = "eval/generated_answers.json"
-EVAL_RESULTS_PATH = "eval/eval_results.csv"
+GENERATED_ANSWERS_PATH = "eval/gen_qwen1.7b_judge_qwen4b/generated_answers.json"
+EVAL_RESULTS_PATH = "eval/gen_qwen1.7b_judge_qwen4b/eval_results.csv"
+HITL_FEEDBACK_PATH = "eval/gen_qwen1.7b_judge_qwen4b/hitl_feedback.json"
 
 
 def load_dataset(path=DATASET_PATH):
