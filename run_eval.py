@@ -37,6 +37,35 @@ def load_generated_answers(path=GENERATED_ANSWERS_PATH):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
+def load_hitl_feedbacks(path=HITL_FEEDBACK_PATH):
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+def load_eval_result(path=EVAL_RESULTS_PATH):
+    if not os.path.exists(path):
+        return None
+    with open(path, encoding="utf-8", newline="") as f:
+        return list(csv.DictReader(f))
+
+def save_hitl_feedback(feedback_data, path=HITL_FEEDBACK_PATH):
+    existing_feedbacks = load_hitl_feedbacks(path)
+
+    # Handle the duplicates
+    is_duplicate = False
+    for i in range(len(existing_feedbacks)):
+        if (existing_feedbacks[i]["question"] == feedback_data["question"] and
+            existing_feedbacks[i]["response"] == feedback_data["response"]):
+            # Overwrite the existing feedback entry
+            existing_feedbacks[i] = feedback_data
+            is_duplicate = True
+            break
+
+    if not is_duplicate:
+        existing_feedbacks.append(feedback_data)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(existing_feedbacks, f, ensure_ascii=False, indent=2)
 
 async def run():
     # PASS 1: Generate All Answers using CHAT_MODEL 
