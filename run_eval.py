@@ -2,18 +2,21 @@ import os
 import json
 import asyncio
 import pandas as pd
+import csv
 from openai import AsyncOpenAI
 from ragas.llms import llm_factory
 from ragas.metrics.collections import Faithfulness, AnswerRelevancy, ContextPrecision, ContextRecall
 from ragas.embeddings.base import embedding_factory
 from src.prepare_content import search_by_query, format_context
 from src.run_prompt import run_prompt
+from src.hitl_review import is_hitl_enabled, flag_for_feedback, collect_human_feedback
 
 
 OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
 JUDGE_MODEL = os.environ.get("RAGAS_JUDGE_MODEL", "judge_qwen")
 EMBED_MODEL = os.environ.get("RAGAS_EMBED_MODEL", "nomic-embed-text")
 CHAT_MODEL = os.environ.get("OLLAMA_MODEL", "custom_qwen")
+HITL_FLAG_THRESHOLD = float(os.environ.get("HITL_FLAG_THRESHOLD", 0.7))
 
 DATASET_PATH = "eval/golden_dataset.json"
 GENERATED_ANSWERS_PATH = "eval/generated_answers.json"
@@ -186,6 +189,29 @@ async def run():
     print(f"\nSaved Eval results to {EVAL_RESULTS_PATH}")
     print("\n=== Mean scores ===")
     print(df[["faithfulness", "answer_relevancy", "context_precision", "context_recall"]].mean())
+
+    # PASS 3: Huamn In The Loop
+    print("\n=== PASS 2: Human In The Loop ===")
+    if is_hitl_enabled():
+        existing_feedback = load_hitl_feedbacks()
+        existing_questions = {item["question"] for item in existing_feedback}
+        for row in eval_result:
+            if row["question"] in existing_questions:
+                continue
+            metrics = {}
+            for k in ["faithfulness", "answer_relevancy", "context_precision", "context_recall"]:
+                metrics[k] = float(row[k])
+                
+            hitl_flag_reasons = flag_for_feedback(metrics, threshold=HITL_FLAG_THRESHOLD)
+            # if HITL is needed due to low scores, collect human feedback
+            if hitl_flag_reasons:
+                review = collect_human_feedback(row["question"], row["response"], row["reference_answer"], metrics, "; ".join(map(str, hitl_flag_reasons)))
+                if review:
+                    save_hitl_feedback(review)
+        
+    else:
+        print("\n(HITL skipped — set HITL_ENABLED=true when an SME is available)")
+
 
 
 if __name__ == "__main__":
