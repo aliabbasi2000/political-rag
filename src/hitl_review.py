@@ -20,8 +20,10 @@ def flag_for_feedback(ragas_scores, threshold=0.7):
     """
     flagged = {}
     for metric, score in ragas_scores.items():
-        if score < threshold:
-            flagged[metric] = score
+        if score is None:
+            continue
+        if float(score) < threshold:
+            flagged[metric] = float(score)
 
     return False if not flagged else flagged
 
