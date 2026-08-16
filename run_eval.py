@@ -54,6 +54,7 @@ def load_eval_result(path=EVAL_RESULTS_PATH):
         return list(csv.DictReader(f))
 
 def save_hitl_feedback(feedback_data, path=HITL_FEEDBACK_PATH):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     existing_feedbacks = load_hitl_feedbacks(path)
 
     # Handle the duplicates
