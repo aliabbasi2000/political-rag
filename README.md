@@ -2,7 +2,7 @@
 
 A Retrieval-Augmented Generation (RAG) system built from scratch, focusing on politics. 
 
-This system generates a corpus from Wikipedia articles on political topics, stores sentence embeddings in PostgreSQL with pgvector, and uses prompt engineering to answer questions using a local LLM running on your machine with no external API calls. Containerized with Docker for a portable deployment.
+This system generates a corpus from Wikipedia articles on political topics, stores sentence embeddings in PostgreSQL with pgvector, and uses prompt engineering to answer questions using a local LLM running on your machine with no external API calls. Answers quality is assessed with RAGAS evaluation method, and a human-in-the-loop (HITL) review step for a subject matter expert to check the low accuracy responses.
 
 
 
@@ -93,7 +93,11 @@ docker compose run --rm rag python main.py
 
 ## Architecture Evaluation
 
-The generated responses were evaluated using a local LLM as a judge over 25 samples.
+To Evaluate the proposed RAG, execute the evaluation phase like below:
+```bash
+python run_eval.py
+```
+The Evaluations below are done over 25 golden samples using a local LLM as a judge. 
 
 ### Evaluation 1
 
@@ -126,6 +130,31 @@ The generated responses were evaluated using a local LLM as a judge over 25 samp
 | **Context Recall** | 1.0 |
 
 > Note: Using a larger model improved the performance of generation phase.
+
+## Human-in-the-Loop (HITL) Evaluation
+ 
+A subject matter expert (SME) can optionally review the answers RAGAS scored the lowest. When enabled, it runs as **Pass 3** of `run_eval.py`, right after the automated RAGAS scoring in Pass 2.
+ 
+**Enabling it**
+ 
+ HITL is off by default. Turn it when an SME is available to review in this:
+ 
+```bash
+# in .env
+HITL_ENABLED=true
+HITL_FLAG_THRESHOLD=0.7
+HITL_REVIEWER_NAME=ReviewerName
+```
+ 
+```bash
+python run_eval.py
+```
+
+**How it works**
+- Any answer where a RAGAS metric falls below `HITL_FLAG_THRESHOLD` will be get flagged.
+- For each flagged answer, the reviewer will see the model's response for a query, and the metrics that triggered the flag. Then he will be asked to provide the feedback records of **Approve**, **Reject**, or **Skip**, plus an optional comment.
+- Finally, the Feedback will be saved to `eval/theEvalExperiment/hitl_feedback.json`
+
 
 ## Databases
  
@@ -188,16 +217,19 @@ sudo systemctl stop postgresql
 political-rag/
 ├── assets/                       # Static images and diagrams
 ├── data/
-│   ├── all_articles/             # Raw article corpus for RAG indexing
-│   └── eval/                     # Evaluation datasets
-│       └── samples/              # Small text files used for local eval runs
-├── eval/                         # Evaluation experiments (e.g., RAGAS checks)
+│   └── all_articles/             # Raw article corpus for RAG indexing pulled by generate_corpus.py script
+├── eval/                         
+│   ├── samples/                       # 5 sample articles used for local eval runs
+│   ├── gen_qwen0.6b_judge_qwen1.7b/   # Evaluation experiment 1
+│   ├── gen_qwen1.7b_judge_qwen4b/     # Evaluation experiment 2
+│   └── golden_dataset.json       
 ├── src/
 │   ├── embedding_db.py           # Defines embedding table model
 │   ├── generate_corpus.py        # Downloads and saves raw Wikipedia political articles
 │   ├── populate_vector_db.py     # Splits articles, embeds sentences, inserts into PostgreSQL
 │   ├── prepare_content.py        # Retrieves and formats context blocks for prompt input
 │   ├── retrieve_db_content.py    # Runs vector similarity search and context window retrieval
+|   ├── hitl_review.py            # HITL flagging + feedback collection
 │   └── run_prompt.py             # Sends prompts to the local LLM
 ├── .env.example                  # Example environment variables
 ├── .env                          # Local environment config (not committed)
@@ -212,7 +244,7 @@ political-rag/
 └── .venv/                        # Local Python virtual environment
 ```
 
-## Repository History
+## Summary of Repository History
 
 ```mermaid
 gitGraph
@@ -230,5 +262,12 @@ gitGraph
    commit id: "expand-dataset-refactor-gen"
    commit id: "two-phase-eval-pipeline"
    checkout main
-   merge feature/eval id: "PR-eval-merge" tag: "current"
+   merge feature/eval id: "PR-eval-merge" tag: "v1.1.0"
+   branch feature/HITL
+   checkout feature/HITL
+   commit id: "hitl-flagging-logic"
+   commit id: "hitl-feedback-collection"
+   commit id: "hitl-eval-integration"
+   checkout main
+   merge feature/HITL id: "PR-hitl-merge" tag: "v1.2.0"
 ```
