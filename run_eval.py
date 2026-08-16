@@ -198,9 +198,9 @@ async def run():
     print("\n=== PASS 3: Human-in-the-Loop ===")
     if is_hitl_enabled():
         existing_feedback = load_hitl_feedbacks()
-        existing_questions = {item["question"] for item in existing_feedback}
+        existing_keys = {(item.get("question"), item.get("response")) for item in existing_feedback}
         for row in eval_result:
-            if row["question"] in existing_questions:
+            if (row.get("question"), row.get("response")) in existing_keys:
                 continue
             metrics = {}
             for k in ["faithfulness", "answer_relevancy", "context_precision", "context_recall"]:
