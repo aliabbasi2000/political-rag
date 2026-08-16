@@ -202,10 +202,11 @@ async def run():
         for row in eval_result:
             if (row.get("question"), row.get("response")) in existing_keys:
                 continue
-            metrics = {}
-            for k in ["faithfulness", "answer_relevancy", "context_precision", "context_recall"]:
-                metrics[k] = float(row[k])
-                
+            try:
+                metrics = {k: float(row[k]) for k in ["faithfulness", "answer_relevancy", "context_precision", "context_recall"]}
+            except (KeyError, TypeError, ValueError) as e:
+                print(f"Skipping HITL for sample due to invalid metric values: {e}")
+                continue
             hitl_flag_reasons = flag_for_feedback(metrics, threshold=HITL_FLAG_THRESHOLD)
             # if HITL is needed due to low scores, collect human feedback
             if hitl_flag_reasons:
