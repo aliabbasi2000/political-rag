@@ -194,8 +194,8 @@ async def run():
         print("\n=== Mean scores ===")
         print(df[["faithfulness", "answer_relevancy", "context_precision", "context_recall"]].mean())
 
-    # PASS 3: Huamn In The Loop
-    print("\n=== PASS 2: Human In The Loop ===")
+    # PASS 3: Human-in-the-Loop
+    print("\n=== PASS 3: Human-in-the-Loop ===")
     if is_hitl_enabled():
         existing_feedback = load_hitl_feedbacks()
         existing_questions = {item["question"] for item in existing_feedback}
