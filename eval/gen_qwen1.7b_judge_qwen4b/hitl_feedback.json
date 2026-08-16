@@ -1,0 +1,66 @@
+[
+  {
+    "question": "Who is the current Prime Minister of Italy?",
+    "response": "The current Prime Minister of Italy is Giorgia Meloni.",
+    "reference_answer": "The current Prime Minister of Italy is Giorgia Meloni.",
+    "ragas_scores": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9999999999999992,
+      "context_precision": 0.5833333333041666,
+      "context_recall": 1.0
+    },
+    "flag_reason": "context_precision",
+    "human_reviewer": "Ali",
+    "human_feedback": "approve",
+    "human_comment": "",
+    "review_timestamp": "2026-08-15T15:25:43.779334"
+  },
+  {
+    "question": "What are the two unelected posts/institutions that are unique to the Islamic Republic?",
+    "response": "The two unelected posts/institutions unique to the Islamic Republic are the Supreme Leader and Guardian Council.",
+    "reference_answer": "Two unelected posts/institutions unique to the Islamic Republic are the Supreme Leader and Guardian Council.",
+    "ragas_scores": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9962334342881821,
+      "context_precision": 0.6999999999766667,
+      "context_recall": 1.0
+    },
+    "flag_reason": "context_precision",
+    "human_reviewer": "Ali",
+    "human_feedback": "approve",
+    "human_comment": "",
+    "review_timestamp": "2026-08-15T15:26:32.367404"
+  },
+  {
+    "question": "What Type is the system of government of France?",
+    "response": "France has a semi-presidential system of government. This is explicitly stated in the context, which notes that the country is a \"semi-presidential system determined by the Constitution of the Fifth Republic.\" The source cited is [Source: Politics_of_France.txt | sentences 1-9].",
+    "reference_answer": "France is a semi-presidential system.",
+    "ragas_scores": {
+      "faithfulness": 0.6666666666666666,
+      "answer_relevancy": 0.9698884054435865,
+      "context_precision": 0.9999999999666667,
+      "context_recall": 1.0
+    },
+    "flag_reason": "faithfulness",
+    "human_reviewer": "Ali",
+    "human_feedback": "approve",
+    "human_comment": "The response is correct but a bit too detailed!",
+    "review_timestamp": "2026-08-15T15:27:55.518532"
+  },
+  {
+    "question": "What is the primary form of system in Finland?",
+    "response": "The primary form of government in Finland is a parliamentary system. This is explicitly stated in the context: \"Finland has a parliamentary system, even if the President of Finland is formally responsible for foreign policy.\"",
+    "reference_answer": "Finland has a primarily parliamentary system.",
+    "ragas_scores": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9022691496095575,
+      "context_precision": 0.5333333333155555,
+      "context_recall": 1.0
+    },
+    "flag_reason": "context_precision",
+    "human_reviewer": "Ali",
+    "human_feedback": "approve",
+    "human_comment": "",
+    "review_timestamp": "2026-08-15T15:28:36.507003"
+  }
+]
